@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+
+
 
 Vue.use(Router)
 
@@ -10,8 +11,17 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'mainpage',
+      component: {
+        default: () => import("@/components/mainpage/Mainpage.vue")
+      }
+    },
+    {
+      path: '/Calender',
+      name: 'Calender',
+      component: {
+        default: () => import("@/components/calender/Calender.vue")
+      }
     },
     {
       path: '/about',
