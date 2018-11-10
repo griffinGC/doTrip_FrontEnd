@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <!-- <main-page></main-page> -->
+      <!-- <calender></calender> -->
     </div>
     <router-view/>
   </div>
@@ -11,11 +11,12 @@
 <script>
 import Calender from '@/components/calender/Calender.vue'
 import MainPage from '@/components/mainpage/Mainpage.vue'
-  
+
 export default {
   name: 'app',
   components: {
-    
+    Calender,
+    MainPage
   }
 }
 </script>

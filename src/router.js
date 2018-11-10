@@ -13,15 +13,14 @@ export default new Router({
       path: '/',
       name: 'mainpage',
       component: {
-        default: () => import("@/components/mainpage/Mainpage.vue")
+        default: () => import("./components/mainpage/Mainpage")
       }
     },
     {
       path: '/Calender',
       name: 'Calender',
-      component: {
-        default: () => import("@/components/calender/Calender.vue")
-      }
+      component: () => import("./components/calender/Calender")
+      
     },
     {
       path: '/about',
