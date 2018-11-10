@@ -1,42 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- <main-page></main-page> -->
-      <!-- <calender></calender> -->
-    </div>
+    <Nav></Nav>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Calender from '@/components/calender/Calender.vue'
+import Calendar from '@/components/calendar/Calendar.vue'
 import MainPage from '@/components/mainpage/Mainpage.vue'
-
+import Nav from '@/components/Nav'
 export default {
   name: 'app',
   components: {
-    Calender,
-    MainPage
+    Nav
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style lang="scss" src="./assets/css/style.scss">
+
+</style>
+">
 </style>

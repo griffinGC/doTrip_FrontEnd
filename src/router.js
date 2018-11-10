@@ -12,14 +12,25 @@ export default new Router({
     {
       path: '/',
       name: 'mainpage',
-      component: {
-        default: () => import("./components/mainpage/Mainpage")
-      }
+      component:() => import("./components/mainpage/Mainpage")
+      
     },
     {
-      path: '/Calender',
-      name: 'Calender',
-      component: () => import("./components/calender/Calender")
+      path: '/Calendar',
+      name: 'Calendar',
+      component: () => import("./components/calendar/Calendar")
+      
+    },
+    {
+      path: '/setting',
+      name: 'Setting',
+      component: () => import("./components/Setting")
+      
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: () => import("./components/About")
       
     },
     {
