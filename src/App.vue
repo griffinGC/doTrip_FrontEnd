@@ -11,7 +11,7 @@
 <script>
 import Calender from '@/components/calender/Calender.vue'
 import MainPage from '@/components/mainpage/Mainpage.vue'
-
+  
 export default {
   name: 'app',
   components: {
