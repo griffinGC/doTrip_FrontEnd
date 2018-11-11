@@ -12,7 +12,9 @@ import Nav from '@/components/Nav'
 export default {
   name: 'app',
   components: {
-    Nav
+    Nav,
+    Calendar,
+    MainPage
   }
 }
 </script>
@@ -20,5 +22,5 @@ export default {
 <style lang="scss" src="./assets/css/style.scss">
 
 </style>
-">
-</style>
+
+

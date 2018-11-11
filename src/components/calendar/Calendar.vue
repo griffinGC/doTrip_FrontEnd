@@ -1,15 +1,22 @@
 <template>
- <h1>여기는 Calendar</h1>
+<div class="calendar">
+  <full-calendar :events="events"></full-calendar>
+</div>
+ 
 </template>
 
 <script>
 // @ is an alias to /src
+import { FullCalendar } from 'vue-full-calendar'
+import 'fullcalendar/dist/fullcalendar.css'
 
 export default {
   name: 'Calendar',
   methods: {},
   conputed: {},
-  components: {},
+  components: {
+    FullCalendar,
+  },
   data(){
     return{}
   },

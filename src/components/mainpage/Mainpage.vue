@@ -11,10 +11,12 @@
             <input class="mainCity" type="text" placeholder="시작 도시" v-model="city.mainCity"/>
             <input class="inCity" type="text" placeholder="in" v-model="city.inDay"/>
             <input class="outCity" type="text" placeholder="out" v-model="city.outDay"/>
-            <!-- <i class="xi-plus-square" v-on:click="addChecklist"></i> -->
-            <!-- <div class="checkList">
-
-            </div> -->
+            <i class="xi-plus-square" v-on:click="addCheckList"></i>            
+            <!-- <div class="checkList" v-for="checklist in checkList" v-bind="checklist" v-bind:key="checklist.index" v-show="isCheck"> -->
+            <div class="checkList" v-for="city in cityInfo" v-bind="checklist" v-bind:key="city.index" v-show="isCheck">   
+                <input type="checkbox" class="checklist">
+                <input type="text" class="checkMain">
+            </div>
         </form>
     </div>    
     <h1>{{cityInfo}}</h1> 
@@ -38,18 +40,15 @@ export default {
             mainCity : '',
             inDay : '',
             outDay : '',
-            checkList :[]
-            
+            // checkList :[]
           })
           this.cityInfo.mainCity = "시작도시";
           this.cityInfo.inDay ="in";
           this.cityInfo.outDay="out"
       },
-    //   addCheckList(){
-    //       this.chekList.push({
-
-    //       })
-    //   }
+      addCheckList(){
+          this.isCheck = true;
+      }
 
   },
   data(){
@@ -58,10 +57,12 @@ export default {
             {
             mainCity : '',
             inDay : '',
-            outDay : ''
+            outDay : '',
+            checkList:[]
             }            
         ],
         num : 0,
+        isCheck : false
     }
   }
 }
