@@ -6,6 +6,8 @@ import 'xeicon'
 
 Vue.config.productionTip = false
 
+import 'xeicon';
+
 new Vue({
   router,
   store,

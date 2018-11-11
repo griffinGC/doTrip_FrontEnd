@@ -1,5 +1,6 @@
 <template>
   <div class="Mainpage">
+
     
     <i class="xi-home-o"></i>
     <span>도시</span><span>in</span><span>out</span> <i class="xi-plus-circle-o" v-on:click="addCity"></i>
@@ -17,6 +18,7 @@
         </form>
     </div>    
     <h1>{{cityInfo}}</h1> 
+
   </div>
 </template>
 
