@@ -12,9 +12,8 @@ export default new Router({
     {
       path: '/',
       name: 'mainpage',
-      component: {
-        default: () => import("./components/mainpage/Mainpage")
-      }
+      component:  () => import("./components/mainpage/Mainpage")
+      
     },
     {
       path: '/Calender',
