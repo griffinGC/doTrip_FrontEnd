@@ -22,6 +22,12 @@ export default new Router({
       
     },
     {
+      path: '/Schedule',
+      name: 'Schedule',
+      component:() => import("./components/calendar/Schedule")
+      
+    },
+    {
       path: '/setting',
       name: 'Setting',
       component: () => import("./components/Setting")
