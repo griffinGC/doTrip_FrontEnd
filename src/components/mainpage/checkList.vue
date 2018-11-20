@@ -1,10 +1,8 @@
 <template>
   <div class="checklist">
-    <li>
-        <input type="checkbox" class="checklist">                    
-        <input type="text" class="checkMain" ><br>
-        <input type="textarea" cols="50" rows="20" class="action">
-    </li> 
+    <input type="checkbox">                    
+    <input type="text" ><br>
+    <input type="textarea" cols="50" rows="20" >
   </div>
 </template>
 
@@ -18,20 +16,14 @@ export default {
 
   },
   methods:{
-      addCheckList(){
-          this.isCheck = true;
-          this.dot.checkLists.push({
-                id : '',
-                title : '',
-                actions : ''
-          })
-      }
 
   },
   
   data(){
     return {
+        checkLists:[
 
+        ]
     }
   }
 }
