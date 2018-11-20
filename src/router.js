@@ -22,7 +22,7 @@ export default new Router({
       
     },
     {
-      path: '/Schedule',
+      path: '/Calendar/:id',
       name: 'Schedule',
       component:() => import("./components/calendar/Schedule")
       
