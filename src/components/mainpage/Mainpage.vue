@@ -10,14 +10,16 @@
             <i class="xi-plus-circle-o" v-on:click="addCity" ></i>     
         </form>      
     </div>
-    <div class="putDot" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+    <div >
+        <!-- class="putDot" v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
         <div class="cityLists" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <!-- <CityList v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
-            <i class="xi-check-circle"></i>
+            <span><CityList v-bind="city"></CityList>
+            <!-- <i class="xi-check-circle"></i>
             <span  class="city">{{city.mainCity}}</span>
             <span class="in">{{city.inDay}}</span>
-            <span class="out">{{city.outDay}}</span>
-            <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
+            <span class="out">{{city.outDay}}</span> -->
+            <!-- <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i> -->
+            </span>
         </div>
     </div>
         
@@ -27,7 +29,7 @@
 
 <script>
 import dragula from 'dragula'
-import 'dragula/dist/dragula.css'
+// import 'dragula/dist/dragula.css'
 import CityList from '@/components/mainpage/CityList'
 
 export default {
@@ -84,12 +86,12 @@ export default {
   data(){
     return {
         dot:[
-            {
-                num : 0,
-                mainCity : 'city',
-                inDay : '',
-                outDay : ''
-            }
+            // {
+            //     num : 0,
+            //     mainCity : 'city',
+            //     inDay : '',
+            //     outDay : ''
+            // }
         ],
         mainCity:'',
         inDay:'',
@@ -104,7 +106,7 @@ export default {
 
 
 <style>
-span{
+/* span{
     padding : 3%;
 }
 .mainCity{
@@ -117,6 +119,6 @@ span{
 
 i{
     padding: 20px;
-}
+} */
 </style>
 

@@ -4,6 +4,12 @@
             <h1>{{city.mainCity}}</h1><br>
             <h4>{{city.inDay}} - {{city.outDay}} </h4>
         </div><br>
+        
+        <section class="panel">	
+            <input type="checkbox" id="mark-all" @click="selectAll" :checked="areAllSelected">
+            <input v-model="newTask" @keyup.enter="addTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input">
+            <button @click="clearList">일정추가</button>
+        </section>
         <div v-for="city in dot" v-bind:key="city.num" class="list">
             <div v-for="todo in city.checkList" v-bind:key="todo.id">
                 <li>{{todo.title}}</li><br>
@@ -16,6 +22,9 @@
 <script>
 export default {
     name: 'Schedule',
+    methods:{
+
+    },
     data(){
         return {
             dot:[
