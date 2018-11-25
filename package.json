@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
     "bower": "^1.8.4",
+    "dragula": "^3.7.2",
     "vue": "^2.5.17",
     "vue-full-calendar": "^2.7.0",
     "vue-router": "^3.0.1",

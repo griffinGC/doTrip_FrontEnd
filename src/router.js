@@ -22,6 +22,11 @@ export default new Router({
 
     },
     {
+      path: '/Calendar/:id',
+      name: 'Schedule',
+      component:() => import("./components/calendar/Schedule")
+    },
+    {
       path: '/setting',
       name: 'Setting',
       component: () => import("./components/Setting")
@@ -31,7 +36,6 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: () => import("./components/About")
-
     },
     {
       path : '/test',

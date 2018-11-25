@@ -1,80 +1,101 @@
 <template>
   <div class="Mainpage">
-
-    
     <i class="xi-home-o"></i>
     <span>도시</span><span>in</span><span>out</span> 
-        
-    <div class="putDot" v-for="city in dot" v-bind:key="city.num" v-bind="city">
+    <div class="city">
         <form class="putCity">
-            <i class="xi-check-circle"></i>
-            <input class="mainCity" type="text" placeholder="시작 도시" v-model="city.mainCity"/>
-            <input class="inCity" type="date" placeholder="in" v-model="city.inDay"/>
-            <input class="outCity" type="date" placeholder="out" v-model="city.outDay"/>
-            <i class="xi-plus-circle-o" v-on:click="addCity"></i>     
-            <!-- <div class="list" v-for="list in dot" :key="list.id" >
-                <component v-for="item in dot.checkLists" :key="item.id" :is="item"></component>            
-            </div> -->
-            <div class="list" v-for="list in confirmCheck" :key="list.id" :is="list" >
-                <component v-for="item in list.checkLists" :key="item.id" :is="item"></component>            
-            </div>
+            <input class="mainCity" type="text" placeholder="시작 도시" v-model="mainCity"/>
+            <input class="inCity" type="date" v-model="inDay"/>
+            <input class="outCity" type="date" v-model="outDay" @keyup.enter="addCity"/>
+            <i class="xi-plus-circle-o" v-on:click="addCity" ></i>     
         </form>      
     </div>
+    <div class="putDot" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+        <div class="cityLists" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <!-- <CityList v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
+            <i class="xi-check-circle"></i>
+            <span  class="city">{{city.mainCity}}</span>
+            <span class="in">{{city.inDay}}</span>
+            <span class="out">{{city.outDay}}</span>
+            <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
+        </div>
+    </div>
+        
+    <h1>{{dot}}</h1>
   </div>
 </template>
 
 <script>
-import CheckList from '@/components/mainpage/checkList.vue'
+import dragula from 'dragula'
+import 'dragula/dist/dragula.css'
+import CityList from '@/components/mainpage/CityList'
 
 export default {
-  
   name: 'MainPage',
 
   components: {
-      CheckList
+      CityList
   },
 
   methods:{
       addCity(){
+          if(!this.mainCity){
+              alert("도시를 입력해 주세요!");
+              return false;
+          }
+          else if(this.inDay >= this.outDay){
+              alert("날짜를 제대로 입력해 주세요!");
+              return false;
+          }
+          for(let i = 0; i< this.dot.length; i++)
+          {
+              if(this.dot.length === 0){
+                  break;
+              }
+              else if(this.inDay < this.dot[i].outDay){
+                  alert("날짜가 맞지 않습니다!")
+                  return false;
+              }
+          }
           this.dot.push({
             num : ++this.num,
-            mainCity : '',
-            inDay : '',
-            outDay : '',
-            checkLists:[]
+            mainCity : this.mainCity,
+            inDay : this.inDay,
+            outDay : this.outDay,
+            url : `/Calender/${this.mainCity}/${this.inDay}`
           })
+          this.mainCity="";
+          this.inDay= this.outDay;
+          this.outDay = "";
       },
-      addCheckList(){
-        this.confirmCheck.push('CheckList');
-        this.dot.push(confirmCheck);
-        // for(let i = 0; i<this.dot.length; i++)
-        // {
-        //     // this.dot[i].checkLists.push(confirmCheck);
-            this.dot[i].checkLists.push('CheckList');
-        // }
-      }
+      deleteCity(num){
+        this.dot.splice(num,1);
+      }      
+  },
+  updated(){
+      if(this.dragulaCards) this.dragulaCards.destroy()
 
+      this.dragulaCards = dragula([
+          ...Array.from(this.$el.querySelectorAll('.cityLists'))
+      ]).on('drop',(el, wrapper, target, siblings)=>{
+          console.log('drop')
+      })
   },
   data(){
     return {
         dot:[
-             {
-                mainCity : '',
+            {
+                num : 0,
+                mainCity : 'city',
                 inDay : '',
-                outDay : '',
-                checkLists:
-                [
-                    // {
-                    // id : '',
-                    // title : '',
-                    // actions : ''
-                    // }
-                ]
-            }            
+                outDay : ''
+            }
         ],
-        confirmCheck:[],
+        mainCity:'',
+        inDay:'',
+        outDay:'',
         num : 0,
-        isCheck : false
+        dragulaCards: null
     }
   }
 }
@@ -87,6 +108,7 @@ span{
     padding : 3%;
 }
 .mainCity{
+    margin-left : 5%;
     width: 20%
 }
 .inCity , .outCity{
