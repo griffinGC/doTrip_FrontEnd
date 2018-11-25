@@ -11,11 +11,14 @@
         </form>      
     </div>
     <div class="putDot" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-        <i class="xi-check-circle"></i>
-        <span  class="city">{{city.mainCity}}</span>
-        <span class="in">{{city.inDay}}</span>
-        <span class="out">{{city.outDay}}</span>
-        <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
+        <div class="cityLists" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <!-- <CityList v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
+            <i class="xi-check-circle"></i>
+            <span  class="city">{{city.mainCity}}</span>
+            <span class="in">{{city.inDay}}</span>
+            <span class="out">{{city.outDay}}</span>
+            <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
+        </div>
     </div>
         
     <h1>{{dot}}</h1>
@@ -23,12 +26,15 @@
 </template>
 
 <script>
+import dragula from 'dragula'
+import 'dragula/dist/dragula.css'
+import CityList from '@/components/mainpage/CityList'
 
 export default {
-  
   name: 'MainPage',
 
   components: {
+      CityList
   },
 
   methods:{
@@ -64,9 +70,16 @@ export default {
       },
       deleteCity(num){
         this.dot.splice(num,1);
-      }
+      }      
+  },
+  updated(){
+      if(this.dragulaCards) this.dragulaCards.destroy()
 
-      
+      this.dragulaCards = dragula([
+          ...Array.from(this.$el.querySelectorAll('.cityLists'))
+      ]).on('drop',(el, wrapper, target, siblings)=>{
+          console.log('drop')
+      })
   },
   data(){
     return {
@@ -82,6 +95,7 @@ export default {
         inDay:'',
         outDay:'',
         num : 0,
+        dragulaCards: null
     }
   }
 }
