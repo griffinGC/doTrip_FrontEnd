@@ -19,7 +19,6 @@ export default new Router({
       path: '/Calendar',
       name: 'Calendar',
       component: () => import("./components/calendar/Calendar")
-      
     },
     {
       path: '/Calendar/:id',

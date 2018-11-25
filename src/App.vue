@@ -6,15 +6,16 @@
 </template>
 
 <script>
-import Calendar from '@/components/calendar/Calendar.vue'
-import MainPage from '@/components/mainpage/Mainpage.vue'
+// import Calendar from '@/components/calendar/Calendar.vue'
+// import MainPage from '@/components/mainpage/Mainpage.vue'
 import Nav from '@/components/Nav'
+
 export default {
   name: 'app',
   components: {
     Nav,
-    Calendar,
-    MainPage
+    // Calendar,
+    // MainPage
   }
 }
 </script>
