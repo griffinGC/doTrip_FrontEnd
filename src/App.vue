@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Nav></Nav>
     <router-view/>
+    <Nav></Nav>
   </div>
 </template>
 
@@ -20,6 +20,6 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./assets/css/style.scss">
+<style lang="scss">
 
 </style>
