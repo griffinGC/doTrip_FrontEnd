@@ -23,5 +23,3 @@ export default {
 <style lang="scss" src="./assets/css/style.scss">
 
 </style>
-
-
