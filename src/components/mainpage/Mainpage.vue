@@ -1,53 +1,38 @@
 <template>
-  <div class="Mainpage container my-5">
-      <form class="putCity row text-center">
-          <div class="col text-right">
-              <i class="xi-home-o row h3"></i>
-              <ul class="row"></ul>
-          </div>
-          <div class="col">
-              <ul class="row h3 my-1">도시</ul>
-              <input class="mainCity row my-1 mx-1" type="text" placeholder="시작 도시" v-model="mainCity"/>
-          </div>
-          <div class="col">
-              <ul class="row h3">in</ul>
-              <input class="inCity col mx-1" type="date" v-model="inDay"/>
-          </div>
-          <div class="col">
-              <ul class="row h3">out</ul>
-              <input class="outCity row mx-1" type="date" v-model="outDay" @keyup.enter="addCity"/>
-          </div>
-          <div class="col">
-              <ul class="row h3">add</ul>
-              <i class="xi-plus-circle-o row float-left" v-on:click="addCity" ></i>
-          </div>
-      </form>
-        <!-- <i class="xi-home-o col"></i>
+  <div class="my-5 mx-5">
+      <b-card border-variant="info">
+      <div class ="row text-center h3 my-2">
+        <ul class="xi-home-o col h1"></ul>
         <ul class="col">도시</ul>
         <ul class="col">in</ul>
         <ul class="col">out</ul>
         <ul class="col">add</ul>
       </div>
+      </b-card>
+      <b-card class="my-2">
       <div>
-            <form class="putCity row">
-                <ul class="col"></ul>
-                <input class="mainCity col mx-1" type="text" placeholder="시작 도시" v-model="mainCity"/>
-                <input class="inCity col mx-1" type="date" v-model="inDay"/>
-                <input class="outCity col mx-1" type="date" v-model="outDay" @keyup.enter="addCity"/>
-                <i class="xi-plus-circle-o col float-left" v-on:click="addCity" ></i>     
-            </form>      
-        </div> -->
-        <div class="putDot" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <div class="cityLists" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+        <form class="putCity row my-2 text-center">
+            <i class="h4 xi-check-circle col"></i>
+            <b-form-input class="mainCity col mx-1 text-center" type="text" placeholder="시작 도시" v-model="mainCity"/>
+            <b-form-input class="inCity col mx-1 text-center" type="date" v-model="inDay"/>
+            <b-form-input class="outCity col mx-1 text-center" type="date" v-model="outDay" @keyup.enter="addCity"/>
+            <div class="col add h2 xi-plus-circle-o text-center" v-on:click="addCity" ></div>
+        </form>      
+        </div>
+      </b-card>
+      <b-card>
+        <div class="putDot my-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <div class="cityLists h5 row text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
                 <!-- <CityList v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
-                <i class="xi-check-circle"></i>
-                <span  class="city">{{city.mainCity}}</span>
-                <span class="in">{{city.inDay}}</span>
-                <span class="out">{{city.outDay}}</span>
-                <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
+                <div class=" h4 xi-check-circle col text-center"></div>
+                <div class="city col">{{city.mainCity}}</div>
+                <div class="in col">{{city.inDay}}</div>
+                <div class="out col">{{city.outDay}}</div>
+                <div class="h4 xi-trash-o col text-center" v-on:click="deleteCity(city.num)"></div>
             </div>
         </div>   
-    <h1>{{dot}}</h1>
+      </b-card>
+    <!-- <h1>{{dot}}</h1> -->
   </div>
 </template>
 
@@ -113,13 +98,13 @@ export default {
             {
                 num : 0,
                 mainCity : 'city',
-                inDay : '',
-                outDay : ''
+                inDay : 'inday',
+                outDay : 'outday'
             }
         ],
-        mainCity:'',
-        inDay:'',
-        outDay:'',
+        mainCity:'maincity',
+        inDay:'inday',
+        outDay:'outday',
         num : 0,
         dragulaCards: null
     }
@@ -130,19 +115,26 @@ export default {
 
 
 <style>
-/* span{
-    padding : 3%;
+
+.add{
+    color:black;
+    background-color: white;
 }
+/* .putCity{
+    width: 100%;
+}
+.putCity-item{
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
 .mainCity{
-    margin-left : 5%;
     width: 20%
 }
 .inCity , .outCity{
     width : 15%
-}
-
-i{
-    padding: 20px;
 } */
+
 </style>
 
