@@ -1,5 +1,5 @@
 <template>
-<div class="calendar">
+<div class="calendar my-3 mx-3">
   <full-calendar :config="config" :events="events" @event-click="eventClick"></full-calendar>
 </div>
  
@@ -24,7 +24,6 @@ export default {
       window.open(event.url);
       return false;
     }
-    
     }
   },
   conputed: {},
