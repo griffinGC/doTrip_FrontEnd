@@ -24,7 +24,6 @@ export default {
       window.open(event.url);
       return false;
     }
-    
     }
   },
   conputed: {},
