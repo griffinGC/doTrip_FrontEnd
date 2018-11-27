@@ -8,27 +8,18 @@
 // @ is an alias to /src
 import { FullCalendar } from 'vue-full-calendar';
 import 'fullcalendar/dist/fullcalendar.css';
-// import {mapGetters, mapActions} from 'vuex';
+// zzimport {mapGetters, mapActions} from 'vuex';
 
 export default {
   name: 'Calendar',
   methods: {
-    // dayClick(date){
-    //   console.log(date);
-    //   let url= `/Calendar/${date.events}`;
-    //   // let url= `/Calendar/${date.format('YYYY-MM-DD')}`;
-    //   this.$router.push(url);
-    // },
     eventClick(event){
       if (event.url) {
       window.open(event.url);
       return false;
       }
     },
-    // ...mapGetters(["getResponse"]),
-    // ...mapActions(["setPartialResponse"])
   },
-  conputed: {},
   components: {
     FullCalendar,
   },
@@ -49,7 +40,7 @@ export default {
           center: 'title',
           right: 'next'
         },
-        height : 500
+        height : 480
       }
     }
   },

@@ -7,17 +7,16 @@ export default new Vuex.Store({
   namespaced : true,
   state: {
     dot:{
-          num : null,
           mainCity : null,
-          inDay : null,
+          inDay :null,
           outDay :null,
-          url: null,
+          url:null,
           checkList:{
-            id:null,
+            id:0,
             title :null,
-            action : null
+            action :null
           },
-      }
+        }
 
   },
   getters:{
@@ -27,26 +26,17 @@ export default new Vuex.Store({
 
   }, 
   mutations: {
-    // setPartialResponse: (state, payload) => {
-    //   let keys = Object.keys(payload);
-    //   for (let i = 0; i < keys.length; i++) {
-    //     let key = keys[i];
-    //     state.dot[key] = payload[key];
-    //   }
-    // },
-    // setCheckList: (state, payload) => {
-    //   let keys = Object.keys(payload);
-    //   for (let i = 0; i < keys.length; i++) {
-    //     state.dot.CheckList[keys[i]] = payload[keys[i]];
-    //   }
-    // }
+    setPartialResponse: (state, payload) => {
+      let keys = Object.keys(payload);
+      for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        state.dot[key] = payload[key];
+      }
+    }
   },
   actions: {
-    // setPartialResponse: ({ commit }, payload) => {
-    //   commit("setPartialResponse", payload);
-    // },
-    // setCheckList: ({ commit }, payload) => {
-    //   commit("setCheckList", payload);
-    // }
+    setPartialResponse: ({ commit }, payload) => {
+      commit("setPartialResponse", payload);
+    }
   }
 })

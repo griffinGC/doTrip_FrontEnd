@@ -3,9 +3,9 @@
     <b-card>
       <div class="row h5 cityList my-1">
         <div class=" h4 xi-check-circle col text-center"></div>
-          <div class="city col">{{mainCity}}</div>
-          <div class="in col">{{inDay}}</div>
-          <div class="out col">{{outDay}}</div>
+          <div class="city col">{{dot.mainCity}}</div>
+          <div class="in col">{{dot.inDay}}</div>
+          <div class="out col">{{dot.outDay}}</div>
           <div class="h4 xi-trash-o col text-center" v-on:click="deleteCity(city.num)"></div>
       </div>
     </b-card>
@@ -15,25 +15,27 @@
 <script>
 import dragula from 'dragula'
 import 'dragula/dist/dragula.css'
+import {mapGetters} from 'vuex';
 
 export default {
   name: 'CityList',
   props:[
-      'mainCity',
-      'inDay',
-      'outDay'
-
+      'dot.mainCity',
+      'dot.inDay',
+      'dot.outDay'
   ],
-  components: {
-  },
-
   methods:{
     deleteCity(num){
         this.dot.splice(num,1);
-      }      
+      },
+    ...mapGetters(["getResponse"])
+  },
+  created(){
+    this.dot = this.getResponse();
   },
   data(){
     return {
+      dot:null
     }
   }
 }
