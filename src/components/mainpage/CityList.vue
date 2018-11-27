@@ -1,15 +1,10 @@
 <template>
   <div class="cityList">
-    <div class="putDot" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-        <div class="cityLists">
-            <i class="xi-check-circle"></i>
-            <span  class="city">{{mainCity}}</span>
-            <span class="in">{{inDay}}</span>
-            <span class="out">{{outDay}}</span>
-        </div>
-    </div>
-        
-
+    <i class="xi-check-circle"></i>
+    <span  class="city">{{mainCity}}</span>
+    <span class="in">{{inDay}}</span>
+    <span class="out">{{outDay}}</span>
+    <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
   </div>
 </template>
 
@@ -29,7 +24,9 @@ export default {
   },
 
   methods:{
-      
+    deleteCity(num){
+        this.dot.splice(num,1);
+      }      
   },
   data(){
     return {

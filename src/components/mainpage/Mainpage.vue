@@ -18,10 +18,11 @@
             <b-form-input class="outCity col mx-1 text-center" type="date" v-model="outDay" @keyup.enter="addCity"/>
             <div class="col add h2 xi-plus-circle-o text-center" v-on:click="addCity" ></div>
         </form>      
-        </div>
+      </div>
       </b-card>
       <b-card>
-        <div class="putDot my-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+        <!-- <div class="putDot my-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">-->
+        <div class="cityLists" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <div class="cityLists h5 row text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
                 <!-- <CityList v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
                 <div class=" h4 xi-check-circle col text-center"></div>
@@ -38,7 +39,7 @@
 
 <script>
 import dragula from 'dragula'
-import 'dragula/dist/dragula.css'
+// import 'dragula/dist/dragula.css'
 import CityList from '@/components/mainpage/CityList'
 
 export default {
@@ -115,7 +116,6 @@ export default {
 
 
 <style>
-
 .add{
     color:black;
     background-color: white;
