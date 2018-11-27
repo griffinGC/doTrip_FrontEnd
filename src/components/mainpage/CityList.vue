@@ -1,10 +1,14 @@
 <template>
-  <div class="cityList">
-    <i class="xi-check-circle"></i>
-    <span  class="city">{{mainCity}}</span>
-    <span class="in">{{inDay}}</span>
-    <span class="out">{{outDay}}</span>
-    <i class="xi-trash-o" v-on:click="deleteCity(city.num)"></i>
+  <div>
+    <b-card>
+      <div class="row h5 cityList my-1">
+        <div class=" h4 xi-check-circle col text-center"></div>
+          <div class="city col">{{mainCity}}</div>
+          <div class="in col">{{inDay}}</div>
+          <div class="out col">{{outDay}}</div>
+          <div class="h4 xi-trash-o col text-center" v-on:click="deleteCity(city.num)"></div>
+      </div>
+    </b-card>
   </div>
 </template>
 

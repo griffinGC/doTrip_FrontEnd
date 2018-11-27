@@ -20,19 +20,9 @@
         </form>      
       </div>
       </b-card>
-      <b-card>
-        <!-- <div class="putDot my-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">-->
-        <div class="cityLists" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <div class="cityLists h5 row text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-                <!-- <CityList v-for="city in dot" v-bind:key="city.id" v-bind="city"> -->
-                <div class=" h4 xi-check-circle col text-center"></div>
-                <div class="city col">{{city.mainCity}}</div>
-                <div class="in col">{{city.inDay}}</div>
-                <div class="out col">{{city.outDay}}</div>
-                <div class="h4 xi-trash-o col text-center" v-on:click="deleteCity(city.num)"></div>
-            </div>
+            <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <CityList  v-bind="city"></CityList>
         </div>   
-      </b-card>
     <!-- <h1>{{dot}}</h1> -->
   </div>
 </template>
@@ -97,10 +87,10 @@ export default {
     return {
         dot:[
             {
-                num : 0,
-                mainCity : 'city',
-                inDay : 'inday',
-                outDay : 'outday'
+                // num : 0,
+                // mainCity : 'city',
+                // inDay : 'inday',
+                // outDay : 'outday'
             }
         ],
         mainCity:'maincity',
