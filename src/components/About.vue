@@ -8,8 +8,7 @@
        <div class="container">
            <div class="my-5 mx-2 text-center">
                 <h3>Description</h3>
-                <div class="row text-center">
-                    <br>
+                <div class="text-center"><br>
                     <h6>아주대학교 소프트웨어학과 웹시스템설계 5조의 팀 프로젝트입니다. </h6>
                 </div>
             </div>

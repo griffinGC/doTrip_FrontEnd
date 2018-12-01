@@ -49,6 +49,7 @@ export default {
     opacity: 0.8;
     border-top: 1px solid #f8f9fa;
     display: block;
+    color: #17a2b8;
 }
 .nav-item {
     width: 25%;
