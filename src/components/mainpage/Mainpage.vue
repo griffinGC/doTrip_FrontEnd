@@ -20,6 +20,7 @@
         </form>      
       </div>
       </b-card>
+      <h1>{{dot}}</h1>
             <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList  v-bind="city"></CityList>
         </div>   
@@ -64,7 +65,7 @@ export default {
             mainCity : this.mainCity,
             inDay : this.inDay,
             outDay : this.outDay,
-            url : `/Calender/${this.mainCity}/${this.inDay}`
+            url : `/Calender/${this.inDay}`
           })
           this.mainCity="";
           this.inDay= this.outDay;
@@ -87,10 +88,7 @@ export default {
     return {
         dot:[
             {
-                // num : 0,
-                // mainCity : 'city',
-                // inDay : 'inday',
-                // outDay : 'outday'
+
             }
         ],
         mainCity:'maincity',

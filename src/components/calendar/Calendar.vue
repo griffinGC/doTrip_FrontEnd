@@ -21,7 +21,8 @@ export default {
     // },
     eventClick(event){
      if (event.url) {
-      window.open(event.url);
+      // window.open(event.url);
+      this.$router.push(this.startDay)
       return false;
     }
     }
@@ -32,12 +33,16 @@ export default {
   },
   data(){
     return{
+     config :{
+       defaultView : 'month'
+     },
      events: [
         {
             mainCity  : 'BCN',
             start  : '2018-11-23',
             end    : '2018-11-25',
-            url : '/Calendar/BCN'
+            startDay : '/Calendar/2018-11-23'
+            // url : '/Calendar/2018-11-23',
         },
         {
             mainCity  : 'event2',
