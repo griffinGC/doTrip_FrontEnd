@@ -15,7 +15,7 @@
 <script>
 import dragula from 'dragula'
 import 'dragula/dist/dragula.css'
-import {mapGetters} from 'vuex';
+
 
 export default {
   name: 'CityList',
@@ -25,13 +25,6 @@ export default {
       'dot.outDay'
   ],
   methods:{
-    deleteCity(num){
-        this.dot.splice(num,1);
-      },
-    ...mapGetters(["getResponse"])
-  },
-  created(){
-    this.dot = this.getResponse();
   },
   data(){
     return {
