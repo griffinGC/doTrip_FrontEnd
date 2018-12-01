@@ -88,12 +88,6 @@ export default {
     return {
         dot:[
 
-            // {
-                // num : 0,
-                // mainCity : 'city',
-                // inDay : 'inday',
-                // outDay : 'outday'
-            // }
         ],
         mainCity:'maincity',
         inDay:'inday',

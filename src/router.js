@@ -27,6 +27,11 @@ export default new Router({
       component:() => import("./components/calendar/Schedule")
     },
     {
+      path: '/Calendar/:id/:num',
+      name: 'Actions',
+      component:() => import("./components/calendar/Actions")
+    },
+    {
       path: '/setting',
       name: 'Setting',
       component: () => import("./components/Setting")
