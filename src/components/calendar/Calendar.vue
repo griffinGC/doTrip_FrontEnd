@@ -8,7 +8,8 @@
 // @ is an alias to /src
 import { FullCalendar } from 'vue-full-calendar';
 import 'fullcalendar/dist/fullcalendar.css';
-// zzimport {mapGetters, mapActions} from 'vuex';
+import axios from 'axios';
+
 
 export default {
   name: 'Calendar',
@@ -23,33 +24,19 @@ export default {
   components: {
     FullCalendar,
   },
+    created(){
+      axios.get("http://localhost:8000/checkList")
+      .then((response) =>{
+        this.events = response.data;
+      })
+      
+  },
   data(){
     return{
      config :{
        defaultView : 'month'
      },
      events: [
-        {
-
-            mainCity  : 'BCN',
-            start  : '2018-11-23',
-            end    : '2018-11-25',
-            startDay : '/Calendar/2018-11-23'
-            // url : '/Calendar/2018-11-23',
-        },
-        {
-            mainCity  : 'event2',
-            start  : '2018-11-05',
-            end    : '2018-11-07',
-            url : '/Calendar/event2'
-        },
-        {
-            mainCity  : 'event3',
-            start  : '2018-11-19',
-            end  : '2018-11-24',
-            url : '/Calendar/event3'
-        },
-
       ],
       config: {
         defaultView : 'month',

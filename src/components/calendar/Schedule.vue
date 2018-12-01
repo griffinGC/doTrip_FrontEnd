@@ -1,10 +1,10 @@
 <template>
     <div class = "schedule" >
         <div class="title">
-            <h1>{{checkList.mainCity}}</h1><br>
-            <h4>{{checkList.inDay}} - {{checkList.outDay}} </h4>
+            <h1>{{CheckLists.mainCity}}</h1><br>
+            <h4>{{CheckLists.inDay}} - {{CheckLists.outDay}} </h4>
         </div><br>
-        
+        <h1>{{inDay}}</h1>
         <section class="panel mx-5" >
             <b-form-checkbox id="mark-all"></b-form-checkbox>
             <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input">
@@ -12,9 +12,10 @@
             <b-form-textarea  v-model="doAction" rows="6" placeholder="할일을 구체적으로 적어주세요!"></b-form-textarea>
 
         </section>
+        <!-- <h1>{{CheckLists.checkList}}</h1> -->
         <ul>
-            <li v-for="list in checkList" :key="list.idx">
-                <router-link :to="{name: '', params:{id : list.inday}}">{{list.title}}</router-link>
+            <li v-for="list in CheckLists.checkList" :key="list.num">
+                <router-link :to="{name: 'Actions', params:{id : CheckLists.inDay, num : list.num}}">{{list.title}}</router-link>
             </li>
         </ul>
     </div>
@@ -26,10 +27,13 @@ import axios from 'axios'
 
 export default {
     name: 'Schedule',
-    beforeMount :function(){
-        this.$http.get("http://localhost:8000/checkList")
+    created(){
+        let startDay = "";
+        startDay = this.inDay;
+        axios.get(`http://localhost:8000/checkList/${startDay}`)
         .then((res) =>{
-            this.checkList = res.data
+            this.CheckLists = res.data
+            console.log(this.CheckLists);
         })
     },
     methods:{
@@ -39,11 +43,10 @@ export default {
     },
     data(){
         return {
-            checkList:{
-                idx: 0,
-                title : null,
-                action : null,
-            },
+            CheckLists:"",
+            newTask: "",
+            doAction:"",
+            inDay : this.$route.params.id
         }
    },
 }

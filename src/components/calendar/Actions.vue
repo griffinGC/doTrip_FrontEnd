@@ -1,9 +1,6 @@
 <template>
-    <div class = "schedule" >
-        <div class="title">
-            <p>{{checkList.action}}</p>
-        </div>
-        
+    <div class = "doAction" >
+        <p>{{Actions.action}}</p>
     </div>
 </template>
 
@@ -20,23 +17,26 @@ export default {
     },
     data(){
         return {
-            checkList:{
-                idx: 0,
-                title : null,
-                action : null,
-            },
+            Actions :"",
+            num : "",
+            inDay :""
         }
    },
-   beforeMount(){
-       this.$http.get(""+this.id)
+    created(){
+        let inDay = this.$route.params.id;
+        let num = this.$route.params.num;
+       axios.get(`http://localhost:8000/checkList/${inDay}/${num}`)
        .then((res) =>{
-           this.checkList = res.data
+           this.Actions = res.data
+           console.log(res.data);
        })
    },
-   beforeRouteUpdate(){
-       this.$http.get('url'+to.params.id)
+   beforeRouteUpdate(to, from, next){
+       let inDay = this.$route.params.id;
+       let changePath = to.params.num;
+       axios.get(`http://localhost:8000/checkList/${inDay}/${changePath}`)
        .then((res) =>{
-           this.checkList = res.data
+           this.Actions = res.data
        })
        next();
    }
