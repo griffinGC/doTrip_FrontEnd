@@ -108,7 +108,7 @@ export default {
       load_dot(){
         this.$http.get('/api/dot/load').then((result)=>{
           this.dot = result.data.data;
-        }
+        })
       }
   },
   updated(){
