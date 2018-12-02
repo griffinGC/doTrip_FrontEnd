@@ -96,13 +96,13 @@ export default {
             })
         },
         deleteList(idx){
-        this.schedule.checkList.splice(idx,1);
-        for(let i = 0; i<this.schedule.checkList.length; i++)
-        {
-            this.schedule.checkList[i].id = i;
-        }
-        console.log(this.schedule);
-        // temp.push(this.dot);
+            this.schedule.checkList.splice(idx,1);
+            for(let i = 0; i<this.schedule.checkList.length; i++)
+            {
+                this.schedule.checkList[i].id = i;
+            }
+            console.log(this.schedule);
+            this.schedule_save();
 
         }
     },
