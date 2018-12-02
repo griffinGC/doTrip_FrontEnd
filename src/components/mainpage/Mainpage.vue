@@ -25,6 +25,7 @@
         <div class="cityLists h5 text-center row" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList v-bind="city" class="col"></CityList>
             <span class="h4 xi-trash-o text-center col" v-on:click="deleteCity(num)"></span> 
+
         </div>
         </b-card>
         <div  class="text-center pt-3">
@@ -114,6 +115,10 @@ export default {
       load_dot(){
         this.$http.get('/api/dot/load').then((result)=>{
           this.dot = result.data.data;
+          console.log(result.data)
+            if(result.data.success == 0){
+            this.$router.push('Login')
+          }
         })
       }
   },

@@ -3,7 +3,7 @@
         <div class="title">
             <h1 class="pb-2">{{schedule.mainCity}}</h1>
             <h4>{{schedule.inDay}} - {{schedule.outDay}} </h4>
-            <h1>{{schedule.checkList}}</h1>
+            <!-- <h1>{{schedule.checkList}}</h1> -->
         </div><br>
 
         <section class="panel mx-5 my-2 pb-5 px-5" >
@@ -32,7 +32,7 @@
                 </b-card>
             </div>
         </div>
-        {{this.schedule}}
+        <!-- {{this.schedule}} -->
     </div>
 </template>
 
