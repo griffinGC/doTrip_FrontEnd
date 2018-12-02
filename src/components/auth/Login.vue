@@ -1,6 +1,7 @@
 <template>
   <div class="login text-center px-3 py-4">
-    <h1 class ="pt-4 pb-4">DOTRIP</h1>
+    <!-- <h1 class ="pt-4 pb-4 title">DOTRIP</h1> -->
+    <img src="./DoTrip.jpg" class="pb-4 pt-4">
     <h3 class="pb-3">Login</h3>
     <form class="px-5">
      <div class = "col px-5">
@@ -62,4 +63,18 @@ export default {
 </script>
 
 <style lang="css">
+
+.title {
+    display:#17a2b8;
+    font-size: 11px;
+    padding: 5px 0 0 0;
+    text-align: center;
+    font-family: Bookman
+} 
+
+img{
+  max-width: 80%;
+  width:300px
+
+}
 </style>
