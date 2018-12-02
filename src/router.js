@@ -32,7 +32,7 @@ export default new Router({
       component:() => import("./components/calendar/Actions")
     },
     {
-      path: '/setting',
+      path: '/mypage',
       name: 'Setting',
       component: () => import("./components/Setting")
 

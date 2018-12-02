@@ -1,6 +1,7 @@
 <template>
-    <div class = "doAction" >
-        <p>{{Actions.action}}</p>
+    <div class = "text-left pt-2 ml-3" >
+        <p> {{listAction}} </p>
+ 
     </div>
 </template>
 
@@ -11,41 +12,37 @@ import axios from 'axios'
 export default {
     name: 'Actions',
     methods:{
-        addTask(){
-                
-        }
     },
+    props:[
+        'listAction'
+        ],
     data(){
         return {
-            Actions :"",
-            num : "",
-            inDay :""
         }
    },
-    created(){
-        let inDay = this.$route.params.id;
-        let num = this.$route.params.num;
-       axios.get(`http://localhost:8000/checkList/${inDay}/${num}`)
-       .then((res) =>{
-           this.Actions = res.data
-           console.log(res.data);
-       })
-   },
-   beforeRouteUpdate(to, from, next){
-       let inDay = this.$route.params.id;
-       let changePath = to.params.num;
-       axios.get(`http://localhost:8000/checkList/${inDay}/${changePath}`)
-       .then((res) =>{
-           this.Actions = res.data
-       })
-       next();
-   }
+//     created(){
+//         let inDay = this.$route.params.id;
+//         let num = this.$route.params.num;
+//        axios.get(`http://localhost:8000/checkList/${inDay}/${num}`)
+//        .then((res) =>{
+//            this.Actions = res.data
+//            console.log(res.data);
+//        })
+//    },
+//    beforeRouteUpdate(to, from, next){
+//        let inDay = this.$route.params.id;
+//        let changePath = to.params.num;
+//        axios.get(`http://localhost:8000/checkList/${inDay}/${changePath}`)
+//        .then((res) =>{
+//            this.Actions = res.data
+//        })
+//        next();
+//    }
 }
 </script>
 
 <style>
 .schedule{
-  text-align: center;
   margin-top: 60px;
 } 
 .title{

@@ -17,11 +17,11 @@
                 <div class="row">
                     <div class="col">
                         <i class="xi-emoticon-smiley-o"></i>
-                        <h6>꿉꿉이</h6>
+                        <h6>찌아니</h6>
                     </div>
                     <div class="col">
                         <i class="xi-emoticon-smiley-o"></i>
-                        <h6>미뇽이</h6>
+                        <h6>미뇽초이</h6>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="col">
                         <i class="xi-emoticon-smiley-o"></i>
-                        <h6>홍재찡</h6>
+                        <h6>홍자이</h6>
                     </div>
                 </div>
             </div>
