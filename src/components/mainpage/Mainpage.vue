@@ -103,7 +103,7 @@ export default {
         {
             this.dot[i].num = i;
         }
-        console.log(dot);
+        console.log(this.dot);
         // temp.push(this.dot);
 
       },
