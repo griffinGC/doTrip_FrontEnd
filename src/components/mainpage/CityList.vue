@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card>
+    <b-card border-variant="info">
       <div class="row h5 cityList my-1">
         <div class=" h4 xi-check-circle col text-center"></div>
           <div class="city col">{{mainCity}}</div>

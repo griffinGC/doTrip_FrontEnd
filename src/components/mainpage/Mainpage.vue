@@ -1,6 +1,6 @@
 <template>
   <div class="my-5 mx-5">
-      <b-card border-variant="info">
+      <b-card border-variant="dark">
       <div class ="row text-center h4 my-2">
         <ul class="xi-home-o col h1"></ul>
         <ul class="col mt-2">도시</ul>

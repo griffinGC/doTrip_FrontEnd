@@ -5,31 +5,31 @@
             <h4>{{schedule.inDay}} - {{schedule.outDay}} </h4>
             <h1>{{schedule.checkList}}</h1>
         </div><br>
-        <section class="panel mx-5 my-2 pb-5 px-5" >
-            <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2">
-            <b-button class="my-2" @click="addTask" @keyup:enter="addTask">일정추가</b-button><br>
+        <section class="panel mx-5 my-2 pb-2 px-5" >
+            <input v-model="newTask" label="title" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2 mb-1">
            <div class="px-5">
                 <b-form-textarea  v-model="doAction" rows="4" placeholder="할일을 구체적으로 적어주세요!"></b-form-textarea>
            </div>
+           <b-button class="my-2" @click="addTask" @keyup:enter="addTask">일정추가</b-button>
         </section>
         <div class="mx-5 row">
-            <b-card border-variant="info" class="mx-5 mb-5 col">
-                <div class="row">
-                    <span class="xi-check-circle pb-2 h4"> My CheckList </span>
-                </div>
+            <div class="col">
+                <span class="xi-check-circle pb-2 h4"> My CheckList </span>
+                <b-card border-variant="info" class="mx-2 mb-5">
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
                         <li class="text-left" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
                     </ul>
-            </b-card>
-            <b-card border-variant="info" class="mx-5z mb-5 col">
-                <div class="row">
-                    <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
-                </div>
-                <div class="action">
-                  <textarea v-model="todo"></textarea>
-                  <button @click.prevent='save_action()' type="button" name="button">저장</button>
-                </div>
-            </b-card>
+                </b-card>
+            </div>
+            <div class="col">
+                <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
+                <b-card border-variant="info" class="mx-2 mb-5">
+                    <div class="text-center">
+                        <b-form-textarea v-model="todo" class="row text-center ml-1"></b-form-textarea>
+                        <b-button @click.prevent='save_action()' variant="secondary" class="row mt-2 text-center" >저장</b-button>
+                    </div>
+                </b-card>
+            </div>
         </div>
         {{this.schedule}}
     </div>
