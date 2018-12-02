@@ -19,7 +19,7 @@
                 <span>소개</span>
                 </router-link>
             </ul>
-            <ul class="nav-item col">
+            <ul class="nav-item col" v-on:click.prevent="logoutSubmit">
                 <router-link to="/logout">
                     <i class="xi-tab"></i>
                     <span>로그아웃</span>
@@ -32,8 +32,18 @@
 <script>
 
 export default {
-    name: 'Nav'
-
+    name: 'Nav',
+    methods:{
+        logoutSubmit(){
+            this.$http.get('/api/auth/logout',{
+                id : this.id,
+                pass : this.pass,
+            }).then((response) =>{
+                console.log(response);
+                alert('로그아웃 성공!');
+            })
+        }
+    }
 }
 </script>
 

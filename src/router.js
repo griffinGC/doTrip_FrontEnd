@@ -47,9 +47,8 @@ export default new Router({
     },
     {
       path: '/logout',
-      name: 'Logout',
-      component: () => import("./components/Logout")
-
+      redirect: "/login",
+      name: 'Logout'
     },
     {
       path: '/About',
@@ -66,7 +65,7 @@ export default new Router({
       component: () => import("./components/Test")
     },
     {
-      path : '/',
+      path : '/login',
       name : 'Login',
       component: () => import("./components/auth/Login")
     },

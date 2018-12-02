@@ -43,7 +43,7 @@ export default {
           }).then((response) =>{
             if(response.data.success){
               console.log(response);
-              this.$router.push('Test')
+              this.$router.push('Plan')
             }
             else{
               this.test = response.data;

@@ -12,7 +12,7 @@
         </div>
       </form>
       <p>
-        <router-link to="/">로그인</router-link>
+        <router-link to="/login">로그인</router-link>
       </p>
       <p>
         테스트값 : {{test}}
