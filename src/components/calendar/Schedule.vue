@@ -20,7 +20,7 @@
                         <li class="text-left" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
                     </ul>
             </b-card>
-            <b-card border-variant="info" class="mx-5 mb-5 col">
+            <b-card border-variant="info" class="mx-5z mb-5 col">
                 <div class="row">
                     <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
                 </div>
@@ -66,8 +66,6 @@ export default {
             }).then((res) =>{
                 console.log("success")
             })
-
-
         },
         show_action(data){
             this.todo = data.action;
