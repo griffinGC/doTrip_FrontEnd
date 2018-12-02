@@ -1,6 +1,6 @@
 <template>
   <div class="my-5 mx-5">
-      <b-card border-variant="dark">
+      <b-card border-variant="info">
       <div class ="row text-center h4 my-2">
         <ul class="xi-home-o col h1"></ul>
         <ul class="col mt-2">도시</ul>
@@ -21,9 +21,12 @@
       </div>
       </b-card>
       <h1>{{dot}}</h1>
-        <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <CityList  v-bind="city"></CityList>
+      <b-card border-variant="info">
+        <div class="cityLists h5 text-center row" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <CityList v-bind="city" class="col"></CityList>
+            <span class="h4 xi-trash-o text-center col" v-on:click="deleteCity(num)"></span> 
         </div>
+        </b-card>
         <div  class="text-center pt-3">
             <b-button v-on:click="addAll">Save</b-button>
         </div>

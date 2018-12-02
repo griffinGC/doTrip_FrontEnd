@@ -8,7 +8,6 @@
 
         <section class="panel mx-5 my-2 pb-5 px-5" >
             <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2" @keyup.enter="addTask">
-            <b-button class="my-2" @click="addTask" @keyup.enter="addTask">일정추가</b-button><br>
            <div class="px-5">
                 <b-form-textarea  v-model="doAction" rows="4" placeholder="할일을 구체적으로 적어주세요!"></b-form-textarea>
            </div>
