@@ -52,10 +52,23 @@ export default {
     },
     methods:{
         addTask(){
+            let nowNum = this.CheckLists.checkList.length +1;
+            let nowDay = this.CheckLists.inDay;
+            console.log(beforeNum);
+            this.axios.put(`http://localhost:8000/checkList/${nowDay}/${nowNum}`, 
+            {
+                num : nowNum,
+                title : this.newTak,
+                action : this.doAction
+            }).then((res) =>{
+                console.log("success")
+            })
+
                 
         },
         toggleMore(){
             this.isShort = !this.isShort;
+
         }
     },
     data(){
@@ -64,7 +77,9 @@ export default {
             newTask: "",
             doAction:"",
             inDay : this.$route.params.id,
+            num : "",
             isShort :true
+
         }
    },
 }
