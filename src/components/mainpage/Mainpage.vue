@@ -3,10 +3,10 @@
       <b-card border-variant="info">
       <div class ="row text-center h4 my-2">
         <ul class="xi-home-o col h1"></ul>
-        <ul class="col">도시</ul>
-        <ul class="col">in</ul>
-        <ul class="col">out</ul>
-        <ul class="col">add</ul>
+        <ul class="col mt-2">도시</ul>
+        <ul class="col mt-2">in</ul>
+        <ul class="col mt-2">out</ul>
+        <ul class="col mt-2">add</ul>
       </div>
       </b-card>
       <b-card class="my-2">
@@ -24,7 +24,9 @@
         <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList  v-bind="city"></CityList>
         </div>
-        <b-button v-on:click="addAll">Save</b-button>
+        <div  class="text-center pt-3">
+            <b-button v-on:click="addAll">Save</b-button>
+        </div>
   </div>
 </template>
 
