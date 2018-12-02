@@ -22,11 +22,11 @@
       </b-card>
       <h1>{{dot}}</h1>
       <b-card border-variant="info" class="px-1">
-        <div class="cityLists h5 text-center row ml-5" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+          <div class="cityLists">
+            <div class="temp h5 text-center row ml-5" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList v-bind="city" class="col-10"></CityList>
             <div class="h4 xi-trash-o text-center mt-2 col-1" v-on:click="deleteCity(city.num)"></div> 
-
-
+        </div>
         </div>
         </b-card>
         <div  class="text-center pt-3">
@@ -135,7 +135,8 @@ export default {
 
       this.dragulaCards = dragula([
           ...Array.from(this.$el.querySelectorAll('.cityLists'))
-      ]).on('drop',(el, wrapper, target, siblings)=>{
+    //   ]).on('drop',(el, wrapper, target, siblings)=>{
+        ]).on('drop',()=>{
           console.log('drop')
       })
   },

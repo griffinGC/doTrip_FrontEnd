@@ -17,9 +17,9 @@
             <div class="col">
                 <span class="xi-check-circle pb-2 h4"> My CheckList </span>
                 <b-card border-variant="info" class="mx-2 mb-5">
-                    <ul v-for="list in schedule.checkList" :key="list.num" class="ml-1 pt-2 row">
+                    <ul v-for="list in schedule.checkList" :key="list.num" class="mx-1 pt-2 row">
                         <li class="text-left col-8" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
-                        <ul class="h4 xi-trash-o text-center col-1"></ul> 
+                        <ul class="h4 xi-trash-o text-center col-1" @click="deleteList(list.id)"></ul> 
                         <!-- 쓰레기통 클릭했을 때 구현하기 -->
                     </ul>
                 </b-card>
@@ -50,6 +50,9 @@ export default {
         this.$http.get(`/api/dot/loadone/${this.dotNum}`).then((result)=>{
         // this.$http.get(`http://localhost:8000/checkList/${this.dotNum}`).then((result)=>{
           this.schedule = result.data.data;
+            if(result.data.success == 0){
+            this.$router.push('/login')
+          }
           })
     },
     methods:{
@@ -73,6 +76,8 @@ export default {
                 }
             )
             this.schedule_save();
+            this.newTask = "";
+            this.doAction = "";
         },
         show_action(data){
             this.todo = data.action;
@@ -89,6 +94,16 @@ export default {
             }).then((res) =>{
                 console.log(res.data);
             })
+        },
+        deleteList(idx){
+        this.schedule.checkList.splice(idx,1);
+        for(let i = 0; i<this.schedule.checkList.length; i++)
+        {
+            this.schedule.checkList[i].id = i;
+        }
+        console.log(this.schedule);
+        // temp.push(this.dot);
+
         }
     },
     data(){
