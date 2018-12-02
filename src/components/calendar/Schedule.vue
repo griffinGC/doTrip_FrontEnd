@@ -1,8 +1,8 @@
 <template>
     <div class = "schedule" >
         <div class="title">
-            <h1 class="pb-2">{{CheckLists.mainCity}}</h1>
-            <h4>{{CheckLists.inDay}} - {{CheckLists.outDay}} </h4>
+            <h1 class="pb-2">{{schedule.mainCity}}</h1>
+            <h4>{{schedule.inDay}} - {{schedule.outDay}} </h4>
         </div><br>
         <section class="panel mx-5 my-2 pb-5 px-5" >
             <b-form-checkbox id="mark-all"></b-form-checkbox>
@@ -17,7 +17,7 @@
                 <div class="row">
                     <span class="xi-check-circle pb-2 h4"> My CheckList </span>  
                 </div>
-                    <ul v-for="list in CheckLists.checkList" :key="list.num" class="mx-3 pt-2">
+                    <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
                         <li class="text-left" ><a href @click.prevent="toggleMore()" >{{list.title}}</a></li>
                     </ul>
             </b-card>
@@ -25,7 +25,7 @@
                 <div class="row">
                     <span class="xi-check-circle pb-2 h4"> CheckList Content </span>  
                 </div>
-                    <ul v-for="list in CheckLists.checkList" :key="list.num" class="mx-3 pt-2">
+                    <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
                         <Actions v-show ="isShort===false"  v-bind:listAction="list.action"> </Actions>
                     </ul>
             </b-card>
@@ -42,22 +42,23 @@ export default {
     name: 'Schedule',
     components:{Actions},
     created(){
-        let startDay = "";
-        startDay = this.inDay;
-        axios.get(`http://localhost:8000/checkList/${startDay}`)
+        let startNum = "";
+        // startDay = this.inDay;
+        startNum = this.dotNum;
+        axios.get(`http://localhost:8000/checkList/${startNum}`)
         .then((res) =>{
-            this.CheckLists = res.data
-            console.log(this.CheckLists);
+            this.schedule = res.data
+            console.log(this.schedule);
         })
     },
     methods:{
         addTask(){
-            let nowNum = this.CheckLists.checkList.length +1;
-            let nowDay = this.CheckLists.inDay;
+            let checkNum = this.schedule.checkList.length +1;
+            let nowdotNum = this.schedule.num;
             console.log(beforeNum);
-            this.axios.put(`http://localhost:8000/checkList/${nowDay}/${nowNum}`, 
+            this.axios.put(`http://localhost:8000/checkList/${nowdotNum}/${checkNum}`, 
             {
-                num : nowNum,
+                num : checkNum,
                 title : this.newTak,
                 action : this.doAction
             }).then((res) =>{
@@ -73,9 +74,10 @@ export default {
     },
     data(){
         return {
-            CheckLists:"",
+            schedule:"",
             newTask: "",
             doAction:"",
+            dotNum : this.$route.params.id,
             inDay : this.$route.params.id,
             num : "",
             isShort :true

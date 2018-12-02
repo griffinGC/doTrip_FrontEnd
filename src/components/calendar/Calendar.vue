@@ -1,6 +1,8 @@
 <template>
 <div class="calendar py-5 px-5">
   <full-calendar :config="config" :events="events" @event-click="eventClick"></full-calendar>
+  <!-- <h1>{{schedule}}</h1> -->
+  <h1>{{events}}</h1>
 </div>
 </template>
 
@@ -25,17 +27,29 @@ export default {
     FullCalendar,
   },
     created(){
-      axios.get("http://localhost:8000/checkList")
-      .then((response) =>{
-        this.events = response.data;
-      })
-      
+      this.$http.get('/api/dot/load').then((result)=>{
+          this.schedule = result.data.data;
+        }).then((result) =>{
+            for(let i = 0; i < this.schedule.length; i++)
+            {
+              let total ={};
+              total.title = this.schedule[i].mainCity;
+              total.start = this.schedule[i].inDay;
+              total.end = this.schedule[i].outDay;
+              total.url = "/Calendar/"+this.schedule[i].num; 
+              this.events.push(total);
+            }
+            console.log("create schedule?")
+            }
+        )
   },
+  
   data(){
     return{
      config :{
        defaultView : 'month'
      },
+     schedule:"",
      events: [
       ],
       config: {
