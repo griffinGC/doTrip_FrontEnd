@@ -65,7 +65,8 @@ export default {
               }
           }
           this.dot.push({
-            num : ++this.num,
+            // num : ++this.num,
+            num : this.dot.length,
             mainCity : this.mainCity,
             inDay : this.inDay,
             outDay : this.outDay,

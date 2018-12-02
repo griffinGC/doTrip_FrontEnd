@@ -47,7 +47,7 @@ export default {
           }).then((response) =>{
             if(response.data.success){
               console.log(response);
-              this.$router.push('Test')
+              this.$router.push('/')
             }
             else{
               this.test = response.data;
