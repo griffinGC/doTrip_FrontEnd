@@ -3,6 +3,7 @@
         <div class="title">
             <h1 class="pb-2">{{schedule.mainCity}}</h1>
             <h4>{{schedule.inDay}} - {{schedule.outDay}} </h4>
+            <h1>{{schedule.checkList}}</h1>
         </div><br>
         <section class="panel mx-5 my-2 pb-5 px-5" >
             <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2">
@@ -43,26 +44,24 @@ export default {
     name: 'Schedule',
     components:{Actions},
     created(){
-        let startNum = "";
-        // startDay = this.inDay;
-        startNum = this.dotNum;
-        axios.get(`http://localhost:8000/checkList/${startNum}`)
-        .then((res) =>{
-            this.schedule = res.data
-            console.log(this.schedule);
-        })
+        // this.$http.get(`/api/dot/load/${this.dotNum}`).then((result)=>{
+        this.$http.get(`http://localhost:8000/checkList/${this.dotNum}`).then((result)=>{
+          this.schedule = result.data;
+          })
     },
     methods:{
         addTask(){
-            let checkNum = this.schedule.checkList.length +1;
             let nowdotNum = this.schedule.num;
-            console.log(beforeNum);
-            this.axios.put(`http://localhost:8000/checkList/${nowdotNum}/${checkNum}`,
-            {
-                num : checkNum,
-                title : this.newTak,
-                action : this.doAction
-            }).then((res) =>{
+            let checkNum = this.schedule.checkList.length;
+            this.schedule.checkList.push(
+                {
+                    id : checkNum,
+                    title : this.newTask,
+                    action : this.doAction
+                }
+            )
+            this.axios.put(`http://localhost:8000/checkList/${nowdotNum}`,
+            this.schedule ).then((res) =>{
                 console.log("success")
             })
         },
@@ -80,7 +79,6 @@ export default {
             newTask: "",
             doAction:"",
             dotNum : this.$route.params.id,
-            inDay : this.$route.params.id,
             num : "",
             todo : null,
             state : -1,
