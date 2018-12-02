@@ -17,16 +17,14 @@
             <b-form-input class="inCity col mx-1 text-center" type="date" v-model="inDay"/>
             <b-form-input class="outCity col mx-1 text-center" type="date" v-model="outDay" @keyup.enter="addCity"/>
             <div class="col add h2 xi-plus-circle-o text-center" v-on:click="addCity" ></div>
-        </form>      
+        </form>
       </div>
       </b-card>
-      <!-- <h1>{{dot}}</h1> -->
-        <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id">
-            <CityList  v-bind:mainCity="city.mainCity" v-bind:inDay="city.inDay" v-bind:outDay="city.outDay"></CityList>
+      <h1>{{dot}}</h1>
+        <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <CityList  v-bind="city"></CityList>
         </div>
-        <div class="text-center py-4">
-        <b-button>Save</b-button>
-        </div>
+        <b-button v-on:click="addAll">Save</b-button>
   </div>
 </template>
 
@@ -44,10 +42,7 @@ export default {
       CityList
   },
     created(){
-        axios.get("http://localhost:8000/dotLoad")
-        .then((res) =>{
-            this.dot = res.data;
-        })
+      this.load_dot();
     },
   methods:{
       addCity(){
@@ -68,16 +63,17 @@ export default {
                   alert("날짜가 맞지 않습니다!")
                   return false;
               }
-          } 
+          }
           this.dot.push({
-            num : ++this.num,
+            // num : ++this.num,
+            num : this.dot.length,
             mainCity : this.mainCity,
             inDay : this.inDay,
             outDay : this.outDay,
           })
           this.mainCity="";
           this.inDay= this.outDay;
-          this.outDay = "";        
+          this.outDay = "";
         //   this.axios.post("http://localhost:8000/addDot",
         //   {
         //       num : ++this.num,
@@ -91,19 +87,30 @@ export default {
         //       this.outDay = "";
         //   })
 
-          
+
       },
       deleteCity(num){
         this.dot.splice(num,1);
       },
       addAll(){
-          this.axios.post("",
+          this.$http.post('api/dot/save',
           {
-
+            dotList : this.dot
           }).then(response =>{
-
+            if(response.data.success){
+              console.log(response);
+              alert('저장 성공!')
+            }
+            else{
+              alert('저장 실패!')
+            }
           })
-      }      
+      },
+      load_dot(){
+        this.$http.get('/api/dot/load').then((result)=>{
+          this.dot = result.data.data;
+        })
+      }
   },
   updated(){
       if(this.dragulaCards) this.dragulaCards.destroy()
@@ -151,4 +158,3 @@ export default {
 } */
 
 </style>
-
