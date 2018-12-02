@@ -15,9 +15,11 @@
         <!-- <h1>{{CheckLists.checkList}}</h1> -->
         <ul>
             <li v-for="list in CheckLists.checkList" :key="list.num">
-                <router-link :to="{name: 'Actions', params:{id : CheckLists.inDay, num : list.num}}">{{list.title}}</router-link>
+                <router-link :to="{name: 'Actions', params:{id : CheckLists.inDay, num : list.num}}" replace>{{list.title}}</router-link>
+                <router-view></router-view>
             </li>
         </ul>
+        <!-- <router-view/> -->
     </div>
 </template>
 
@@ -38,7 +40,17 @@ export default {
     },
     methods:{
         addTask(){
-                
+            let nowNum = this.CheckLists.checkList.length +1;
+            let nowDay = this.CheckLists.inDay;
+            console.log(beforeNum);
+            this.axios.put(`http://localhost:8000/checkList/${nowDay}/${nowNum}`, 
+            {
+                num : nowNum,
+                title : this.newTak,
+                action : this.doAction
+            }).then((res) =>{
+                console.log("success")
+            })
         }
     },
     data(){
@@ -46,7 +58,8 @@ export default {
             CheckLists:"",
             newTask: "",
             doAction:"",
-            inDay : this.$route.params.id
+            inDay : this.$route.params.id,
+            num : ""
         }
    },
 }

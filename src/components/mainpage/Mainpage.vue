@@ -21,10 +21,10 @@
       </div>
       </b-card>
       <h1>{{dot}}</h1>
-            <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+        <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList  v-bind="city"></CityList>
-        </div>   
-    <!-- <h1>{{dot}}</h1> -->
+        </div> 
+
   </div>
 </template>
 
@@ -32,6 +32,8 @@
 import dragula from 'dragula'
 // import 'dragula/dist/dragula.css'
 import CityList from '@/components/mainpage/CityList'
+import axios from 'axios'
+
 
 export default {
   name: 'MainPage',
@@ -39,7 +41,12 @@ export default {
   components: {
       CityList
   },
-
+    created(){
+        axios.get("http://localhost:8000/dot/load")
+        .then((res) =>{
+            this.dot = res.data;
+        })
+    },
   methods:{
       addCity(){
           if(!this.mainCity){
@@ -59,17 +66,21 @@ export default {
                   alert("날짜가 맞지 않습니다!")
                   return false;
               }
-          }
-          this.dot.push({
-            num : ++this.num,
-            mainCity : this.mainCity,
-            inDay : this.inDay,
-            outDay : this.outDay,
-            url : `/Calender/${this.inDay}`
+          }          
+          this.axios.post("http://localhost:8000/addDot",
+          {
+              num : ++this.num,
+              mainCity : this.mainCity,
+              inDay : this.inDay,
+              outDay : this.outDay
+          }).then(response =>{
+              console.log("success");
+              this.mainCity="";
+              this.inDay= this.outDay;
+              this.outDay = "";
           })
-          this.mainCity="";
-          this.inDay= this.outDay;
-          this.outDay = "";
+
+          
       },
       deleteCity(num){
         this.dot.splice(num,1);
@@ -86,12 +97,10 @@ export default {
   },
   data(){
     return {
-        dot:[
-
-        ],
-        mainCity:'maincity',
-        inDay:'inday',
-        outDay:'outday',
+        dot:[],
+        mainCity:'',
+        inDay:'',
+        outDay:'',
         num : 0,
         dragulaCards: null
     }
