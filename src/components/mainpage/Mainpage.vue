@@ -76,20 +76,6 @@ export default {
           this.mainCity="";
           this.inDay= this.outDay;
           this.outDay = "";        
-        //   this.axios.post("http://localhost:8000/addDot",
-        //   {
-        //       num : ++this.num,
-        //       mainCity : this.mainCity,
-        //       inDay : this.inDay,
-        //       outDay : this.outDay
-        //   }).then(response =>{
-        //       console.log("success");
-        //       this.mainCity="";
-        //       this.inDay= this.outDay;
-        //       this.outDay = "";
-        //   })
-
-          
       },
       deleteCity(num){
         this.dot.splice(num,1);
@@ -97,9 +83,9 @@ export default {
       addAll(){
           this.axios.post("",
           {
-
+              dot : this.dot
           }).then(response =>{
-
+              console.log("sucess sending");
           })
       }      
   },
