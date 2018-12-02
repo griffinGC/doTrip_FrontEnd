@@ -73,12 +73,6 @@ export default {
                 }
             )
             this.schedule_save();
-            // this.$http.post(`/api/dot/saveone`,{
-            //     num : this.dotNum,
-            //     dot : this.schedule
-            // }).then((res) =>{
-            //     console.log(res.data);
-            // })
         },
         show_action(data){
             this.todo = data.action;

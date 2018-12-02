@@ -26,6 +26,7 @@
             <CityList v-bind="city" class="col-10"></CityList>
             <div class="h4 xi-trash-o text-center mt-2 col-1" v-on:click="deleteCity(num)"></div> 
 
+
         </div>
         </b-card>
         <div  class="text-center pt-3">
@@ -95,8 +96,16 @@ export default {
 
 
       },
-      deleteCity(num){
-        this.dot.splice(num,1);
+      deleteCity(idx){
+        this.dot.splice(idx,1);
+        let temp = [];
+        for(let i = 0; i<this.dot.length; i++)
+        {
+            this.dot[i].num = i;
+        }
+        console.log(dot);
+        // temp.push(this.dot);
+
       },
       addAll(){
           this.$http.post('api/dot/save',
