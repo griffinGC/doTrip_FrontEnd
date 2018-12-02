@@ -30,7 +30,6 @@
                 </div>
             </b-card>
             {{schedule}}
-
         </div>
     </div>
 </template>
@@ -69,7 +68,7 @@ export default {
         },
         show_action(data){
             this.todo = data.action;
-            this.state = data.num;
+            this.state = data.id;
         },
         save_action(){
           this.schedule.checkList[this.state].action = this.todo;
