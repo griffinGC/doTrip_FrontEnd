@@ -24,7 +24,7 @@
         <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList  v-bind="city"></CityList>
         </div>
-        <b-button>Save</b-button>
+        <b-button v-on:click="addAll">Save</b-button>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
       CityList
   },
     created(){
-      load_dot();
+      this.load_dot();
     },
   methods:{
       addCity(){
