@@ -24,7 +24,7 @@
         <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList  v-bind="city"></CityList>
         </div> 
-
+        <b-button>Save</b-button>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
       CityList
   },
     created(){
-        axios.get("http://localhost:8000/dot/load")
+        axios.get("http://localhost:8000/dotLoad")
         .then((res) =>{
             this.dot = res.data;
         })
@@ -66,24 +66,41 @@ export default {
                   alert("날짜가 맞지 않습니다!")
                   return false;
               }
-          }          
-          this.axios.post("http://localhost:8000/addDot",
-          {
-              num : ++this.num,
-              mainCity : this.mainCity,
-              inDay : this.inDay,
-              outDay : this.outDay
-          }).then(response =>{
-              console.log("success");
-              this.mainCity="";
-              this.inDay= this.outDay;
-              this.outDay = "";
+          } 
+          this.dot.push({
+            num : ++this.num,
+            mainCity : this.mainCity,
+            inDay : this.inDay,
+            outDay : this.outDay,
           })
+          this.mainCity="";
+          this.inDay= this.outDay;
+          this.outDay = "";        
+        //   this.axios.post("http://localhost:8000/addDot",
+        //   {
+        //       num : ++this.num,
+        //       mainCity : this.mainCity,
+        //       inDay : this.inDay,
+        //       outDay : this.outDay
+        //   }).then(response =>{
+        //       console.log("success");
+        //       this.mainCity="";
+        //       this.inDay= this.outDay;
+        //       this.outDay = "";
+        //   })
 
           
       },
       deleteCity(num){
         this.dot.splice(num,1);
+      },
+      addAll(){
+          this.axios.post("",
+          {
+
+          }).then(response =>{
+
+          })
       }      
   },
   updated(){
