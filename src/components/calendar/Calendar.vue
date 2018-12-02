@@ -1,5 +1,5 @@
 <template>
-<div class="calendar my-3 mx-3">
+<div class="calendar py-5 px-5">
   <full-calendar :config="config" :events="events" @event-click="eventClick"></full-calendar>
 </div>
 </template>
@@ -45,7 +45,7 @@ export default {
           center: 'title',
           right: 'next'
         },
-        height : 480
+        height : 500
       }
     }
   },

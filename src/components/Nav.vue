@@ -14,9 +14,9 @@
                 </router-link>
             </ul>
             <ul class="nav-item col">
-                <router-link to="/setting">
-                    <i class="xi-cog"></i>
-                    <span>설정</span>
+                <router-link to="/mypage">
+                    <i class="xi-user"></i>
+                    <span>마이 페이지</span>
                 </router-link>
             </ul>
             <ul class="nav-item col">

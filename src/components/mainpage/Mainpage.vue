@@ -1,7 +1,7 @@
 <template>
   <div class="my-5 mx-5">
       <b-card border-variant="info">
-      <div class ="row text-center h3 my-2">
+      <div class ="row text-center h4 my-2">
         <ul class="xi-home-o col h1"></ul>
         <ul class="col">도시</ul>
         <ul class="col">in</ul>
