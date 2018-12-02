@@ -7,7 +7,7 @@
         </div><br>
         <section class="panel mx-5 my-2 pb-5 px-5" >
             <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2">
-            <b-button class="my-2" @click="addTask">일정추가</b-button><br>
+            <b-button class="my-2" @click="addTask" @keyup:enter="addTask">일정추가</b-button><br>
            <div class="px-5">
                 <b-form-textarea  v-model="doAction" rows="4" placeholder="할일을 구체적으로 적어주세요!"></b-form-textarea>
            </div>
@@ -30,8 +30,8 @@
                   <button @click.prevent='save_action()' type="button" name="button">저장</button>
                 </div>
             </b-card>
-            {{schedule}}
         </div>
+        {{this.schedule}}
     </div>
 </template>
 
@@ -44,15 +44,24 @@ export default {
     name: 'Schedule',
     components:{Actions},
     created(){
-        // this.$http.get(`/api/dot/load/${this.dotNum}`).then((result)=>{
-        this.$http.get(`http://localhost:8000/checkList/${this.dotNum}`).then((result)=>{
-          this.schedule = result.data;
+        this.$http.get(`/api/dot/loadone/${this.dotNum}`).then((result)=>{
+        // this.$http.get(`http://localhost:8000/checkList/${this.dotNum}`).then((result)=>{
+          this.schedule = result.data.data;
           })
     },
     methods:{
         addTask(){
             let nowdotNum = this.schedule.num;
-            let checkNum = this.schedule.checkList.length;
+            let checkNum =""
+            if(!this.schedule.checkList)
+            {
+                checkNum = 0
+                this.schedule.checkList = [];
+                }
+            else{
+                checkNum = this.schedule.checkList.length;
+            }
+            console.log(checkNum);
             this.schedule.checkList.push(
                 {
                     id : checkNum,
@@ -60,10 +69,10 @@ export default {
                     action : this.doAction
                 }
             )
-            this.axios.put(`http://localhost:8000/checkList/${nowdotNum}`,
-            this.schedule ).then((res) =>{
-                console.log("success")
-            })
+            // this.axios.put(`http://localhost:8000/checkList/${nowdotNum}`,
+            // this.schedule ).then((res) =>{
+            //     console.log("success")
+            // })
         },
         show_action(data){
             this.todo = data.action;
@@ -71,6 +80,10 @@ export default {
         },
         save_action(){
           this.schedule.checkList[this.state].action = this.todo;
+        // this.axios.put(`http://localhost:8000/checkList/${nowdotNum}`,
+        // this.schedule ).then((res) =>{
+        //     console.log("success")
+        // })
         }
     },
     data(){
