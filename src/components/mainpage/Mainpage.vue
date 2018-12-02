@@ -92,16 +92,22 @@ export default {
         this.dot.splice(num,1);
       },
       addAll(){
-          this.axios.post("",
+          this.$http.post('api/dot/save',
           {
-
+            dotList : this.dot
           }).then(response =>{
-
+            if(response.data.success){
+              console.log(response);
+              alert('저장 성공!')
+            }
+            else{
+              alert('저장 실패!')
+            }
           })
       },
       load_dot(){
         this.$http.get('/api/dot/load').then((result)=>{
-          this.dot = result.data;
+          this.dot = result.data.data;
         }
       }
   },
