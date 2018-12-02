@@ -20,11 +20,13 @@
         </form>      
       </div>
       </b-card>
-      <h1>{{dot}}</h1>
-        <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <CityList  v-bind="city"></CityList>
-        </div> 
+      <!-- <h1>{{dot}}</h1> -->
+        <div class="cityLists h5 text-center" v-for="city in dot" v-bind:key="city.id">
+            <CityList  v-bind:mainCity="city.mainCity" v-bind:inDay="city.inDay" v-bind:outDay="city.outDay"></CityList>
+        </div>
+        <div class="text-center py-4">
         <b-button>Save</b-button>
+        </div>
   </div>
 </template>
 

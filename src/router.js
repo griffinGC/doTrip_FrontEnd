@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Nav from "./components/Nav"
 
 
 
@@ -10,37 +11,54 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/Plan',
       name: 'mainpage',
-      component:() => import("./components/mainpage/Mainpage")
+      components:{
+        default: () => import("./components/mainpage/Mainpage"),
+        footer : Nav
+      }
 
     },
     {
       path: '/Calendar',
       name: 'Calendar',
-      component: () => import("./components/calendar/Calendar")
+      components: {
+        default: () => import("./components/calendar/Calendar"),
+        footer: Nav
+      }
+      
 
     },
     {
       path: '/Calendar/:id',
       name: 'Schedule',
-      component:() => import("./components/calendar/Schedule")
+      components: {
+        default: () => import("./components/calendar/Schedule"),
+        footer: Nav
+      }
     },
     {
       path: '/Calendar/:id/:num',
       name: 'Actions',
-      component:() => import("./components/calendar/Actions")
+      components: {
+        default: () => import("./components/calendar/Actions"),
+        footer: Nav
+      }
     },
     {
-      path: '/mypage',
-      name: 'Setting',
-      component: () => import("./components/Setting")
+      path: '/logout',
+      name: 'Logout',
+      component: () => import("./components/Logout")
 
     },
     {
-      path: '/about',
+      path: '/About',
       name: 'About',
-      component: () => import("./components/About")
+      components: {
+        default: () => import("./components/About"),
+        footer: Nav
+      }
+      
     },
     {
       path : '/test',
@@ -48,12 +66,12 @@ export default new Router({
       component: () => import("./components/Test")
     },
     {
-      path : '/login',
+      path : '/',
       name : 'Login',
       component: () => import("./components/auth/Login")
     },
     {
-      path : '/signup',
+      path : '/Signup',
       name : 'Signup',
       component: () => import("./components/auth/Signup")
     }
