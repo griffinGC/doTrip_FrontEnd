@@ -5,7 +5,6 @@
             <h4>{{schedule.inDay}} - {{schedule.outDay}} </h4>
         </div><br>
         <section class="panel mx-5 my-2 pb-5 px-5" >
-            <b-form-checkbox id="mark-all"></b-form-checkbox>
             <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2">
             <b-button class="my-2" @click="addTask">일정추가</b-button><br>
            <div class="px-5">

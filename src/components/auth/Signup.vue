@@ -1,27 +1,23 @@
 <template>
   <div class="signup">
-    <h1>DOTRIP</h1>
-    <h2>SignUp</h2>
-    <form>
+    <div class="text-center px-3 py-4">
+      <h1 class ="pt-4 pb-4">DOTRIP</h1>
+      <h3 class="pb-3">SignUp</h3>
+      <form class="px-5">
+        <div class = "col px-5">
+            NAME : <b-form-input  class="my-2" v-model="name" type="text" placeholder="NAME" required></b-form-input>
+             ID : <b-form-input class="my-2" v-model="id" type="text" placeholder="ID" required></b-form-input>
+            PASSWORD : <b-form-input  class="my-2" v-model="pass" type="password" placeholder="PASSWORD" required></b-form-input>
+          <b-button type="submit" class="my-5" variant="primary" v-on:click.prevent="loginSubmit">submit</b-button>
+        </div>
+      </form>
       <p>
-        <input v-model="name" type="text" placeholder="NAME" min="2" max="8" required>
+        <router-link to="/login">로그인</router-link>
       </p>
       <p>
-        <input v-model="id" type="text" placeholder="ID" min="4" max="12" required>
+        테스트값 : {{test}}
       </p>
-      <p>
-        <input v-model="pass" type="password" placeholder="PASSWORD" min="4" max="12" required>
-      </p>
-      <p>
-        <input v-on:click.prevent="loginSubmit" type="submit" value="submit">
-      </p>
-    </form>
-    <p>
-      <router-link to="/login">로그인</router-link>
-    </p>
-    <p>
-      테스트값 : {{test}}
-    </p>
+    </div>
   </div>
 </template>
 

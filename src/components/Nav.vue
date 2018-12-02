@@ -2,7 +2,7 @@
     <nav>
         <ul class="nav row">
             <ul class="nav-item col">
-                <router-link to="/">
+                <router-link to="/Plan">
                     <i class="xi-list-ul"></i>
                     <span>일정</span>
                 </router-link>
@@ -14,15 +14,15 @@
                 </router-link>
             </ul>
             <ul class="nav-item col">
-                <router-link to="/mypage">
-                    <i class="xi-user"></i>
-                    <span>마이 페이지</span>
-                </router-link>
-            </ul>
-            <ul class="nav-item col">
                 <router-link to="/about">
                 <i class="xi-emoticon-smiley"></i>
                 <span>소개</span>
+                </router-link>
+            </ul>
+            <ul class="nav-item col" v-on:click.prevent="logoutSubmit">
+                <router-link to="/logout">
+                    <i class="xi-tab"></i>
+                    <span>로그아웃</span>
                 </router-link>
             </ul>
         </ul>
@@ -32,8 +32,18 @@
 <script>
 
 export default {
-    name: 'Nav'
-
+    name: 'Nav',
+    methods:{
+        logoutSubmit(){
+            this.$http.get('/api/auth/logout',{
+                id : this.id,
+                pass : this.pass,
+            }).then((response) =>{
+                console.log(response);
+                alert('로그아웃 성공!');
+            })
+        }
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <b-card>
+    <b-card>
       <div class="row h5 cityList my-1">
         <div class=" h4 xi-check-circle col text-center"></div>
           <div class="city col">{{mainCity}}</div>
@@ -8,7 +8,7 @@
           <div class="out col">{{outDay}}</div>
           <div class="h4 xi-trash-o col text-center" v-on:click="deleteCity(city.num)"></div>
       </div>
-    </b-card> -->
+    </b-card>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ import 'dragula/dist/dragula.css'
 export default {
   name: 'CityList',
   props:[
-      
+      'mainCity', 'inDay', 'outDay'
   ],
   methods:{
   },

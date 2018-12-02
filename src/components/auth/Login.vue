@@ -1,17 +1,13 @@
 <template>
-  <div class="login">
-    <h1>DOTRIP</h1>
-    <h2>Login</h2>
-    <form>
-      <p>
-        <input v-model="id" type="text" placeholder="ID" minlength="4" maxlegnth="12">
-      </p>
-      <p>
-        <input v-model="pass" type="password" placeholder="PASSWORD" min="4" max="12">
-      </p>
-      <p>
-        <input v-on:click.prevent="loginSubmit" type="submit" value="submit">
-      </p>
+  <div class="login text-center px-3 py-4">
+    <h1 class ="pt-4 pb-4">DOTRIP</h1>
+    <h3 class="pb-3">Login</h3>
+    <form class="px-5">
+     <div class = "col px-5">
+        ID : <b-form-input class="my-2" v-model="id"  type="text" placeholder="ID" ></b-form-input>
+        PW : <b-form-input class="my-2" v-model="pass" type="password" placeholder="PASSWORD" ></b-form-input>
+        <b-button type="submit" class="my-5" variant="primary" v-on:click.prevent="loginSubmit">submit</b-button>
+      </div>
     </form>
     <p>
       <router-link to="/signup">회원가입</router-link>
@@ -47,7 +43,7 @@ export default {
           }).then((response) =>{
             if(response.data.success){
               console.log(response);
-              this.$router.push('/')
+              this.$router.push('Plan')
             }
             else{
               this.test = response.data;
