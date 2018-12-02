@@ -17,7 +17,7 @@
                     <span class="xi-check-circle pb-2 h4"> My CheckList </span>
                 </div>
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
-                        <li class="text-left" ><a href @click.prevent="show_action(list.action)" >{{list.title}}</a></li>
+                        <li class="text-left" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
                     </ul>
             </b-card>
             <b-card border-variant="info" class="mx-5 mb-5 col">
@@ -25,10 +25,12 @@
                     <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
                 </div>
                 <div class="action">
-                  <input v-bind:"todo" type="textarea">
-                  {{todo}}
+                  <textarea v-model="todo"></textarea>
+                  <button @click.prevent='save_action()' type="button" name="button">저장</button>
                 </div>
             </b-card>
+            {{schedule}}
+
         </div>
     </div>
 </template>
@@ -68,7 +70,11 @@ export default {
 
         },
         show_action(data){
-            this.todo = data;
+            this.todo = data.action;
+            this.state = data.num;
+        },
+        save_action(){
+          this.schedule.checkList[this.state].action = this.todo;
         }
     },
     data(){
@@ -80,6 +86,7 @@ export default {
             inDay : this.$route.params.id,
             num : "",
             todo : null,
+            state : -1,
 
         }
    },
