@@ -24,7 +24,7 @@
       <b-card border-variant="info" class="px-1">
         <div class="cityLists h5 text-center row ml-5" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList v-bind="city" class="col-10"></CityList>
-            <div class="h4 xi-trash-o text-center mt-2 col-1" v-on:click="deleteCity(num)"></div> 
+            <div class="h4 xi-trash-o text-center mt-2 col-1" v-on:click="deleteCity(city.num)"></div> 
 
 
         </div>
@@ -98,7 +98,6 @@ export default {
       },
       deleteCity(idx){
         this.dot.splice(idx,1);
-        let temp = [];
         for(let i = 0; i<this.dot.length; i++)
         {
             this.dot[i].num = i;
