@@ -21,10 +21,10 @@
       </div>
       </b-card>
       <h1>{{dot}}</h1>
-      <b-card border-variant="info">
-        <div class="cityLists h5 text-center row" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <CityList v-bind="city" class="col"></CityList>
-            <span class="h4 xi-trash-o text-center col" v-on:click="deleteCity(num)"></span> 
+      <b-card border-variant="info" class="px-1">
+        <div class="cityLists h5 text-center row ml-5" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <CityList v-bind="city" class="col-10"></CityList>
+            <div class="h4 xi-trash-o text-center mt-2 col-1" v-on:click="deleteCity(num)"></div> 
 
         </div>
         </b-card>

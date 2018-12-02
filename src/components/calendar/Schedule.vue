@@ -17,8 +17,10 @@
             <div class="col">
                 <span class="xi-check-circle pb-2 h4"> My CheckList </span>
                 <b-card border-variant="info" class="mx-2 mb-5">
-                    <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
-                        <li class="text-left" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
+                    <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2 row">
+                        <li class="text-left col-3" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
+                        <ul class="h4 xi-trash-o text-center col-1"></ul> 
+                        <!-- 쓰레기통 클릭했을 때 구현하기 -->
                     </ul>
                 </b-card>
             </div>
