@@ -14,19 +14,20 @@
         <div class="mx-5 row">
             <b-card border-variant="info" class="mx-5 mb-5 col">
                 <div class="row">
-                    <span class="xi-check-circle pb-2 h4"> My CheckList </span>  
+                    <span class="xi-check-circle pb-2 h4"> My CheckList </span>
                 </div>
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
-                        <li class="text-left" ><a href @click.prevent="toggleMore()" >{{list.title}}</a></li>
+                        <li class="text-left" ><a href @click.prevent="show_action(list.action)" >{{list.title}}</a></li>
                     </ul>
             </b-card>
             <b-card border-variant="info" class="mx-5 mb-5 col">
                 <div class="row">
-                    <span class="xi-check-circle pb-2 h4"> CheckList Content </span>  
+                    <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
                 </div>
-                    <ul v-for="list in schedule.checkList" :key="list.num" class="mx-3 pt-2">
-                        <Actions v-show ="isShort===false"  v-bind:listAction="list.action"> </Actions>
-                    </ul>
+                <div class="action">
+                  <input v-bind:"todo" type="textarea">
+                  {{todo}}
+                </div>
             </b-card>
         </div>
     </div>
@@ -34,7 +35,7 @@
 
 <script>
 import axios from 'axios'
-import Actions from "@/components/calendar/Actions.vue"; 
+import Actions from "@/components/calendar/Actions.vue";
 
 
 export default {
@@ -55,7 +56,7 @@ export default {
             let checkNum = this.schedule.checkList.length +1;
             let nowdotNum = this.schedule.num;
             console.log(beforeNum);
-            this.axios.put(`http://localhost:8000/checkList/${nowdotNum}/${checkNum}`, 
+            this.axios.put(`http://localhost:8000/checkList/${nowdotNum}/${checkNum}`,
             {
                 num : checkNum,
                 title : this.newTak,
@@ -64,11 +65,10 @@ export default {
                 console.log("success")
             })
 
-                
-        },
-        toggleMore(){
-            this.isShort = !this.isShort;
 
+        },
+        show_action(data){
+            this.todo = data;
         }
     },
     data(){
@@ -79,7 +79,7 @@ export default {
             dotNum : this.$route.params.id,
             inDay : this.$route.params.id,
             num : "",
-            isShort :true
+            todo : null,
 
         }
    },
@@ -90,7 +90,7 @@ export default {
 .schedule{
   text-align: center;
   margin-top: 20px;
-} 
+}
 .title{
     padding: 15px 4% 10px;
     font-size: 28px;
