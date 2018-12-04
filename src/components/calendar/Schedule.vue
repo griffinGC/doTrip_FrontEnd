@@ -16,7 +16,7 @@
         <div class="mx-5 row">s
             <div class="col">
                 <span class="xi-check-circle pb-2 h4"> My CheckList </span>
-                <b-card border-variant="info" class="mx-2 mb-5 card">
+                <b-card border-variant="info" class="mx-2 mb-5 cardList">
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-1 pt-2 row">
                         <li class="text-left col-8 list" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
                         <ul class="h4 xi-trash-o text-center col-1"  @click="deleteList(list.id)"></ul> 
@@ -26,9 +26,9 @@
             </div>
             <div class="col pb-5">
                 <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
-                <b-card border-variant="info" class="mx-2 mb-5 card">
-                    <div class="text-center">
-                        <b-form-textarea v-model="todo" class="row text-center ml-1 content"></b-form-textarea>
+                <b-card border-variant="info" class="mx-2 my-2 mb-5 card">
+                    <div class="text-center my-1">
+                        <b-form-textarea v-model="todo" class="row text-center ml-1 contentTodo"></b-form-textarea>
                         <b-button @click.prevent='save_action()' variant="primary" class="row mt-2 text-center" >저장</b-button>
                     </div>
                 </b-card>
@@ -143,12 +143,13 @@ body{
 	background-repeat: no-repeat;
 	background-size : cover;
 }
-.card{
-    height: auto; 
-    min-height: 200px;
+.cardList{
+    height: 200px; 
 }
-.content{
-     height: auto; 
-    min-height: 150px;
+.contentTodo{
+    min-height: 120px;
+    max-height: 120px;
+    overflow-y: scroll;
+    border: 1px solid #0A246A;
 }
 </style>

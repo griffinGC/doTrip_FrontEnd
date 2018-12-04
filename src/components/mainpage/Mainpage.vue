@@ -185,9 +185,6 @@ body{
 	background-repeat: no-repeat;
 	background-size : cover;
 }
-.card-body{
-  padding : 0;
-}
 .input-dot {
   margin-top : 0.25rem;
   margin-left : 1em;
@@ -210,6 +207,9 @@ span{
 .dot-table{
   font-size : 18px;
   width : 30%;
+}
+.temp {
+  height: flex;
 }
 /* .putCity{
     width: 100%;
