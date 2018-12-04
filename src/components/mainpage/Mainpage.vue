@@ -1,6 +1,13 @@
 <template>
   <div class="my-5 mx-5">
     <b-container id="main">
+      <b-button v-on:click="make_order">test</b-button>
+      dot :
+      <br>
+      {{ dot }}
+      tmp :
+      <br>
+      {{ tmp }}
       <!-- <b-card border-variant="info">
       <div class ="row text-center h4 my-2">
         <ul class="xi-home-o col h1"></ul>
@@ -45,8 +52,6 @@
             <div class="temp h5 text-center row ml-1 pt-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">
             <CityList v-bind="city" class="col-11 pr-0"></CityList>
             <div class="h4 xi-trash-o text-center mt-2 pr-2 col-0 " style="cursor:pointer" v-on:click="deleteCity(city.num)" v-b-tooltip.hover title="Delete!"></div>
-
-
         </div>
         </div>
         </b-card>
@@ -129,18 +134,22 @@ export default {
 
       },
       addAll(){
-          this.$http.post('api/dot/save',
-          {
-            dotList : this.dot
-          }).then(response =>{
-            if(response.data.success){
-              console.log(response);
-              alert('저장 성공!')
-            }
-            else{
-              alert('저장 실패!')
-            }
+          this.make_order().then(()=>{
+            console.log("hello");
+            this.$http.post('api/dot/save',
+            {
+              dotList : this.tmp
+            }).then(response =>{
+              if(response.data.success){
+                console.log(response.data);
+                alert('저장 성공!')
+              }
+              else{
+                alert('저장 실패!')
+              }
+            })
           })
+
       },
       load_dot(){
         this.$http.get('/api/dot/load').then((result)=>{
@@ -150,6 +159,67 @@ export default {
             this.$router.push('Login')
           }
         })
+      },
+      make_order(){
+        return new Promise(function(resolve,reject){
+          var first = document.querySelector(".cityLists").childNodes[0];
+          var order = [];
+          var child = first;
+          while(child){
+            console.log(child.getAttribute("num"));
+            order.push(child.getAttribute("num"));
+            child = child.nextSibling;
+          }
+          resolve(order)
+        })
+        .then((order)=>{
+          console.log(order);
+          this.tmp = [];
+          this.tmp = JSON.parse(JSON.stringify(this.dot));
+          for(let i in order){
+            this.tmp[order[i]].num = parseInt(i);
+            // this.dot[order[i]].num = order[i];
+          }
+        })
+        .then(()=>{
+          this.tmp.sort(function (a, b) {
+            if (a.num > b.num) {
+              return 1;
+            }
+            if (a.num < b.num) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+        })
+        // .then(()=>{
+        //   // console.log(copy[0],copy[1],copy[2]);
+        //   for(let i in this.tmp){
+        //     for(let j in this.tmp){
+        //       console.log(i,j);
+        //       if(i == this.tmp[j].num){
+        //         this.dot[i] = this.tmp[j];
+        //         console.log(this.tmp[j].mainCity + this.tmp[j].num);
+        //         console.log(this.dot)
+        //       }
+        //     }
+        //   }
+        // })
+      },
+      clone : function(obj){
+        if (obj === null || typeof(obj) !== 'object')
+        return obj;
+
+        var copy = obj.constructor();
+
+        for (var attr in obj) {
+          if (obj.hasOwnProperty(attr)) {
+            copy[attr] = obj[attr];
+          }
+        }
+
+        return copy;
       }
   },
   updated(){
@@ -165,11 +235,13 @@ export default {
   data(){
     return {
         dot:[],
+        tmp: [],
         mainCity:'',
         inDay:'',
         outDay:'',
         num : 0,
-        dragulaCards: null
+        dragulaCards: null,
+        order : [],
     }
   }
 }

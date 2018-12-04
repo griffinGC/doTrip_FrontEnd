@@ -37,6 +37,13 @@ export default {
       validate : '',
     }
   },
+  beforeCreate : function(){
+    this.$http.get('/api/auth').then((response)=>{
+      console.log(response.data.success);
+      if(response.data.success)
+        this.$router.push('plan');
+    })
+  },
   methods : {
     loginSubmit : function(){
       this.formVal();
@@ -52,7 +59,7 @@ export default {
           }).then((response) =>{
             if(response.data.success){
               console.log(response);
-              this.$router.push('Plan')
+              this.$router.push('plan')
             }
             else{
               this.test = response.data;
