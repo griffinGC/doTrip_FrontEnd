@@ -1,6 +1,16 @@
 <template>
 <div class="calendar py-5 px-5">
-  <full-calendar :config="config" :events="events" @event-click="eventClick"></full-calendar>
+  <div class="container">
+    <div class="jumbotron">
+      <div class="bg">
+        <full-calendar :config="config" :events="events" @event-click="eventClick"></full-calendar>
+      </div>
+    </div>
+  </div>
+
+
+
+
   <!-- <h1>{{schedule}}</h1> -->
   <!-- <h1>{{events}}</h1> -->
 </div>
@@ -47,14 +57,14 @@ export default {
               total.title = this.schedule[i].mainCity;
               total.start = this.schedule[i].inDay;
               total.end = out;
-              total.url = "/Calendar/"+this.schedule[i].num; 
+              total.url = "/Calendar/"+this.schedule[i].num;
               this.events.push(total);
             }
             console.log("create schedule?")
             }
         )
   },
-  
+
   data(){
     return{
      config :{
@@ -77,3 +87,20 @@ export default {
   props: {}
 }
 </script>
+
+<style>
+.jumbotron{
+  background : #edfcff;
+}
+.calendar{
+  background : url(../auth/bg2.jpg);
+  background-repeat: no-repeat;
+  background-size : cover;
+}
+.bg {
+  background: white;
+  padding : 10px 15px;
+  /* width : 80%; */
+  /* text-align : center; */
+}
+</style>

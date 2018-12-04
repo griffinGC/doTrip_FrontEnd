@@ -1,12 +1,15 @@
 <template>
   <div>
-      <span class="row h5 my-1">
+      <span class="row h5 my-1 mr-0" style="width : 100%">
         <router-link :to="getUrl(num)">
-        <div class=" h4 xi-check-circle col text-center"></div>
+        <div class=" h4 xi-check-circle text-center pt-1 pl-2" v-b-tooltip.hover title="In detail!"></div>
         </router-link>
-          <div class="city col">{{mainCity}}</div>
-          <div class="in col">{{inDay}}</div>
-          <div class="out col">{{outDay}}</div>
+        <!-- <h2> -->
+        <span class="city data" >{{mainCity}}</span>
+        <span class="in data">{{inDay}}</span>
+        <span class="out data">{{outDay}}</span>
+        <!-- </h2> -->
+
       </span>
   </div>
 </template>
@@ -26,7 +29,7 @@ export default {
       return "/Calendar/" + Id;
     },
     deleteCity(num){
-      
+
     }
   },
   data(){
@@ -40,6 +43,12 @@ export default {
 
 
 <style>
-
+.data{
+  font-size : 18px;
+  width : 30%;
+}
+.row{
+  margin-left: 0;
+  margin-right : 0;
+}
 </style>
-

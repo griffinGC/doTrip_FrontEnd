@@ -1,21 +1,29 @@
 <template>
   <div class="login text-center px-3 py-4">
-    <!-- <h1 class ="pt-4 pb-4 title">DOTRIP</h1> -->
-    <img src="./DoTrip.jpg" class="pb-4 pt-4">
-    <h3 class="pb-3">Login</h3>
-    <form class="px-5">
-     <div class = "col px-5">
-        ID : <b-form-input class="my-2" v-model="id"  type="text" placeholder="ID" ></b-form-input>
-        PW : <b-form-input class="my-2" v-model="pass" type="password" placeholder="PASSWORD" ></b-form-input>
-        <b-button type="submit" class="my-5" variant="primary" v-on:click.prevent="loginSubmit">submit</b-button>
-      </div>
-    </form>
-    <p>
-      <router-link to="/signup">회원가입</router-link>
-    </p>
-    <p>
-      테스트값 : {{test}}
-    </p>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <!-- <img src="./DoTrip.jpg" class="pb-4 pt-4"> -->
+    <div class="title pb-4">DoTrip</div>
+    <b-container class="con">
+      <b-jumbotron class="jum">
+        <!-- <h1 class="pb-1" style="color : #00478e">LOGIN</h1> -->
+        <h2><b-alert class="text-left" show variant="primary">LOGIN</b-alert></h2>
+
+        <!-- <h2><b-badge variant="info">LOGIN</b-badge></h2> -->
+        <div class="form">
+          <form class="px-5">
+             <div class = "col px-5">
+              ID
+              <b-form-input class="my-2" v-model="id"  type="text" placeholder="아이디를 입력해주세요" ></b-form-input>
+              PASS
+              <b-form-input class="my-2" v-model="pass" type="password" placeholder="비밀번호를 입력해주세요" ></b-form-input>
+              <b-button type="submit" class="my-3" variant="primary" v-on:click.prevent="loginSubmit">LOGIN</b-button>
+              &nbsp;&nbsp;
+              <b-button to="/signup" class="my-3" variant="success">SIGNUP</b-button>
+            </div>
+          </form>
+        </div>
+      </b-jumbotron>
+    </b-container>
   </div>
 </template>
 
@@ -65,16 +73,34 @@ export default {
 <style lang="css">
 
 .title {
-    display:#17a2b8;
-    font-size: 11px;
+    color:white;
+    font-size: 90px;
     padding: 5px 0 0 0;
-    text-align: center;
-    font-family: Bookman
-} 
+    /* text-align: center; */
+    font-weight : 700;
+    font-family: 'Merriweather', serif;
+
+}
 
 img{
   max-width: 80%;
   width:300px
+}
+body{
+  background : url(./bg2.jpg);
+	background-repeat: no-repeat;
+	background-size : cover;
+}
+.con {
+  max-width : 40%;
+}
+.jum{
+  background-color: #edfcff;
+  /* border-radius: 18px; */
+  padding : 0;
+}
+.form {
+  text-align : left;
 
 }
 </style>

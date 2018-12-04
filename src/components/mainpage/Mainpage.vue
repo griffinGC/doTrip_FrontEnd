@@ -1,6 +1,7 @@
 <template>
   <div class="my-5 mx-5">
-      <b-card border-variant="info">
+    <b-container id="main">
+      <!-- <b-card border-variant="info">
       <div class ="row text-center h4 my-2">
         <ul class="xi-home-o col h1"></ul>
         <ul class="col mt-2">도시</ul>
@@ -8,30 +9,51 @@
         <ul class="col mt-2">out</ul>
         <ul class="col mt-2">add</ul>
       </div>
-      </b-card>
+      </b-card> -->
       <b-card class="my-2">
+        <h5><b-alert show>Add New Dot! </b-alert></h5>
       <div>
         <form class="putCity row my-2 text-center">
-            <i class="h4 xi-check-circle col"></i>
-            <b-form-input class="mainCity col mx-1 text-center" type="text" placeholder="시작 도시" v-model="mainCity"/>
-            <b-form-input class="inCity col mx-1 text-center" type="date" v-model="inDay"/>
-            <b-form-input class="outCity col mx-1 text-center" type="date" v-model="outDay" @keyup.enter="addCity"/>
-            <div class="col add h2 xi-plus-circle-o text-center" v-on:click="addCity" ></div>
+            <i class="h4 xi-check-circle text-center dot"></i>
+            <span>
+              <b-form-input class="mainCity mx-1 text-center input-dot" style="width : 95%" type="text" placeholder="시작 도시" v-model="mainCity"/>
+            </span>
+            <span>
+              <b-form-input class="inCity mx-1 text-center input-dot" style="width : 95%" type="date" v-model="inDay"/>
+            </span>
+            <span>
+              <b-form-input class="outCity mx-1 text-center input-dot" type="date" v-model="outDay" @keyup.enter="addCity"/>
+            </span>
+            <i class="add h2 xi-plus-circle-o text-center dot-add" style="cursor:pointer" v-on:click="addCity" ></i>
         </form>
       </div>
       </b-card>
-      <h1>{{dot}}</h1>
-      <b-card border-variant="info" class="px-1">
+
+      <b-card border-variant="info">
+          <h5><b-alert class="mb-0" show variant="primary">Dot List </b-alert></h5>
+          <div>
+            <span class="row h3">
+              <span style="width:11%">Dot</span>
+              <span style="width:19%">City</span>
+              <span style="width:33%">StartDay</span>
+              <span style="width:20%">EndDay</span>
+              <span style="width:17%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</span>
+            </span>
+          </div>
+          <hr class="ml-0">
           <div class="cityLists">
-            <div class="temp h5 text-center row ml-5" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <CityList v-bind="city" class="col-10"></CityList>
-            <div class="h4 xi-trash-o text-center mt-2 col-1" v-on:click="deleteCity(city.num)"></div> 
+            <div class="temp h5 text-center row ml-1 pt-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">
+            <CityList v-bind="city" class="col-11 pr-0"></CityList>
+            <div class="h4 xi-trash-o text-center mt-2 pr-2 col-0 " style="cursor:pointer" v-on:click="deleteCity(city.num)" v-b-tooltip.hover title="Delete!"></div>
+
+
         </div>
         </div>
         </b-card>
         <div  class="text-center pt-3">
             <b-button v-on:click="addAll">Save</b-button>
         </div>
+    </b-container>
   </div>
 </template>
 
@@ -155,10 +177,51 @@ export default {
 
 
 
-<style>
+<style lang="css">
 .add{
     color:black;
     background-color: white;
+}
+#main {
+  max-width : 65%;
+}
+/*
+.jumbotron{
+  background-color: #edfcff;
+  border-radius: 18px;
+  padding : 0;
+} */
+
+body{
+  background : url(../auth/bg2.jpg);
+	background-repeat: no-repeat;
+	background-size : cover;
+}
+.card-body{
+  padding : 0;
+}
+.input-dot {
+  margin-top : 0.25rem;
+  margin-left : 1em;
+  width : 95%;
+}
+span{
+  text-align: center;
+}
+.dot{
+  padding-top : 0.8rem;
+  padding-left : 1em;
+  padding-right : 0.2em;
+
+}
+.dot-add{
+  padding : 0.3em 0.5em 0.3em 0.2em;
+
+  /* padding-right : 1em; */
+}
+.dot-table{
+  font-size : 18px;
+  width : 30%;
 }
 /* .putCity{
     width: 100%;
