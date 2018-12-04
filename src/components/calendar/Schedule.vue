@@ -16,10 +16,10 @@
         <div class="mx-5 row">s
             <div class="col">
                 <span class="xi-check-circle pb-2 h4"> My CheckList </span>
-                <b-card border-variant="info" class="mx-2 mb-5 cardList">
+                <b-card border-variant="info" class="mx-2 my-2 mb-5 mycardList">
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-1 pt-2 row">
                         <li class="text-left col-8 list" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
-                        <ul class="h4 xi-trash-o text-center col-1"  @click="deleteList(list.id)"></ul> 
+                        <ul class="h4 xi-trash-o text-center col-1 trashIcon"  @click="deleteList(list.id)"></ul> 
                         <!-- 쓰레기통 클릭했을 때 구현하기 -->
                     </ul>
                 </b-card>
@@ -138,6 +138,9 @@ export default {
 .list{
      color:black;
 }
+.trashIcon{
+    color:black;
+}
 body{
   background : url(../auth/bg2.jpg);
 	background-repeat: no-repeat;
@@ -145,6 +148,11 @@ body{
 }
 .cardList{
     height: 200px; 
+}
+.mycardList{
+    height: 215px;
+    overflow-y: scroll;
+    border: 1px solid #0A246A;
 }
 .contentTodo{
     min-height: 120px;
