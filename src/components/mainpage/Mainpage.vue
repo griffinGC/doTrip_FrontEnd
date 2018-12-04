@@ -31,20 +31,20 @@
             <span>
               <b-form-input class="outCity mx-1 text-center input-dot" type="date" v-model="outDay" @keyup.enter="addCity"/>
             </span>
-            <i class="add h2 xi-plus-circle-o text-center dot-add" style="cursor:pointer" v-on:click="addCity" ></i>
+            <i class="add h2 xi-plus-circle-o text-center dot-add" variant="primary" style="cursor:pointer" v-on:click="addCity" ></i>
         </form>
       </div>
       </b-card>
 
-      <b-card border-variant="info">
-          <h5><b-alert class="mb-0" show variant="primary">Dot List </b-alert></h5>
+      <b-card border-variant="info" >
+          <h5><b-alert  show variant="primary">Dot List </b-alert></h5>
           <div>
-            <span class="row h3">
-              <span style="width:11%">Dot</span>
-              <span style="width:19%">City</span>
-              <span style="width:33%">StartDay</span>
-              <span style="width:20%">EndDay</span>
-              <span style="width:17%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</span>
+            <span class="row">
+              <span style="width:11%" class=" h3">Dot</span>
+              <span style="width:19%" class="  h3">City</span>
+              <span style="width:33%" class="  h3">StartDay</span>
+              <span style="width:20%" class=" h3">EndDay</span>
+              <span style="width:17%" class=" h3">Delete</span>
             </span>
           </div>
           <hr class="ml-0">
@@ -55,8 +55,8 @@
         </div>
         </div>
         </b-card>
-        <div  class="text-center pt-3">
-            <b-button v-on:click="addAll">Save</b-button>
+        <div  class="text-center pt-3 pb-5">
+            <b-button v-on:click="addAll" variant="primary">Save</b-button>
         </div>
     </b-container>
   </div>
@@ -88,16 +88,16 @@ export default {
               alert("날짜를 제대로 입력해 주세요!");
               return false;
           }
-          for(let i = 0; i< this.dot.length; i++)
-          {
-              if(this.dot.length === 0){
-                  break;
-              }
-              else if(this.inDay < this.dot[i].outDay){
-                  alert("날짜가 맞지 않습니다!")
-                  return false;
-              }
-          }
+          // for(let i = 0; i< this.dot.length; i++)
+          // {
+          //     if(this.dot.length === 0){
+          //         break;
+          //     }
+          //     else if(this.inDay < this.dot[i].outDay){
+          //         alert("날짜가 맞지 않습니다!")
+          //         return false;
+          //     }
+          // }
           this.dot.push({
             // num : ++this.num,
             num : this.dot.length,
@@ -108,18 +108,6 @@ export default {
           this.mainCity="";
           this.inDay= this.outDay;
           this.outDay = "";
-        //   this.axios.post("http://localhost:8000/addDot",
-        //   {
-        //       num : ++this.num,
-        //       mainCity : this.mainCity,
-        //       inDay : this.inDay,
-        //       outDay : this.outDay
-        //   }).then(response =>{
-        //       console.log("success");
-        //       this.mainCity="";
-        //       this.inDay= this.outDay;
-        //       this.outDay = "";
-        //   })
 
 
       },
@@ -269,9 +257,6 @@ body{
 	background-repeat: no-repeat;
 	background-size : cover;
 }
-.card-body{
-  padding : 0;
-}
 .input-dot {
   margin-top : 0.25rem;
   margin-left : 1em;
@@ -294,6 +279,9 @@ span{
 .dot-table{
   font-size : 18px;
   width : 30%;
+}
+.temp {
+  height: flex;
 }
 /* .putCity{
     width: 100%;

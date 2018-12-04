@@ -6,30 +6,30 @@
             <!-- <h1>{{schedule.checkList}}</h1> -->
         </div><br>
 
-        <section class="panel mx-5 my-2 pb-5 px-5" >
+        <section class="panel mx-5 my-2 px-5" >
             <input v-model="newTask" placeholder="일정을 추가해 주세용!" autofocus class="text-input mx-2 mb-2" @keyup.enter="addTask">
            <div class="px-5">
                 <b-form-textarea  v-model="doAction" rows="4" placeholder="할일을 구체적으로 적어주세요!"></b-form-textarea>
            </div>
-           <b-button class="my-2" @click="addTask" @keyup:enter="addTask">일정추가</b-button>
+           <b-button class="my-2" @click="addTask" @keyup:enter="addTask" variant="primary">일정추가</b-button>
         </section>
-        <div class="mx-5 row">
+        <div class="mx-5 row">s
             <div class="col">
                 <span class="xi-check-circle pb-2 h4"> My CheckList </span>
-                <b-card border-variant="info" class="mx-2 mb-5">
+                <b-card border-variant="info" class="mx-2 my-2 mb-5 mycardList">
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-1 pt-2 row">
-                        <li class="text-left col-8" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
-                        <ul class="h4 xi-trash-o text-center col-1" @click="deleteList(list.id)"></ul> 
+                        <li class="text-left col-8 list" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
+                        <ul class="h4 xi-trash-o text-center col-1 trashIcon"  @click="deleteList(list.id)"></ul> 
                         <!-- 쓰레기통 클릭했을 때 구현하기 -->
                     </ul>
                 </b-card>
             </div>
-            <div class="col">
+            <div class="col pb-5">
                 <span class="xi-check-circle pb-2 h4"> CheckList Content </span>
-                <b-card border-variant="info" class="mx-2 mb-5">
-                    <div class="text-center">
-                        <b-form-textarea v-model="todo" class="row text-center ml-1"></b-form-textarea>
-                        <b-button @click.prevent='save_action()' variant="secondary" class="row mt-2 text-center" >저장</b-button>
+                <b-card border-variant="info" class="mx-2 my-2 mb-5 card">
+                    <div class="text-center my-1">
+                        <b-form-textarea v-model="todo" class="row text-center ml-1 contentTodo"></b-form-textarea>
+                        <b-button @click.prevent='save_action()' variant="primary" class="row mt-2 text-center" >저장</b-button>
                     </div>
                 </b-card>
             </div>
@@ -125,11 +125,39 @@ export default {
 .schedule{
   text-align: center;
   margin-top: 20px;
+   color:white;
 }
 .title{
     padding: 15px 4% 10px;
     font-size: 28px;
     font-weight: bold;
 }
-
+.panel{
+     color:white;
+}
+.list{
+     color:black;
+}
+.trashIcon{
+    color:black;
+}
+body{
+  background : url(../auth/bg2.jpg);
+	background-repeat: no-repeat;
+	background-size : cover;
+}
+.cardList{
+    height: 200px; 
+}
+.mycardList{
+    height: 215px;
+    overflow-y: scroll;
+    border: 1px solid #0A246A;
+}
+.contentTodo{
+    min-height: 120px;
+    max-height: 120px;
+    overflow-y: scroll;
+    border: 1px solid #0A246A;
+}
 </style>

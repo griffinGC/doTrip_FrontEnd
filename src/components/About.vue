@@ -27,7 +27,7 @@
                       </div>
                   </div>
               </div>
-              <div class="my-4 mx-2 text-center">
+              <div class="my-4 mx-2 text-center pb-5">
                   <h3>Back-end</h3>
                   <div class="row">
                       <div class="col">

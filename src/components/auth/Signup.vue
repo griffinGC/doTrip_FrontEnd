@@ -4,7 +4,7 @@
     <div class="title pb-3">DoTrip</div>
     <b-container class="con">
       <b-jumbotron class="jum">
-        <h2><b-alert class="text-left"show variant="success">SIGNUP</b-alert></h2>
+        <h2><b-alert class="text-left" show variant="success">SIGNUP</b-alert></h2>
         <div class="form">
           <form class="px-5">
             <div class = "col px-5">
