@@ -1,22 +1,6 @@
 <template>
   <div class="my-5 mx-5">
     <b-container id="main">
-      <b-button v-on:click="make_order">test</b-button>
-      dot :
-      <br>
-      {{ dot }}
-      tmp :
-      <br>
-      {{ tmp }}
-      <!-- <b-card border-variant="info">
-      <div class ="row text-center h4 my-2">
-        <ul class="xi-home-o col h1"></ul>
-        <ul class="col mt-2">도시</ul>
-        <ul class="col mt-2">in</ul>
-        <ul class="col mt-2">out</ul>
-        <ul class="col mt-2">add</ul>
-      </div>
-      </b-card> -->
       <b-card class="my-2">
         <h5><b-alert show>Add New Dot! </b-alert></h5>
       <div>
@@ -31,7 +15,7 @@
             <span>
               <b-form-input class="outCity mx-1 text-center input-dot" type="date" v-model="outDay" @keyup.enter="addCity"/>
             </span>
-            <i class="add h2 xi-plus-circle-o text-center dot-add" variant="primary" style="cursor:pointer" v-on:click="addCity" ></i>
+            <i class="add h2 xi-plus-circle-o text-center dot-add" variant="primary" style="cursor:pointer" v-on:click="addCity" v-b-tooltip.hover title="Add!"></i>
         </form>
       </div>
       </b-card>
