@@ -65,7 +65,6 @@ body{
 }
 #about_jum {
   background-color: white;
-  opacity: 0.8;
 }
 
 </style>
