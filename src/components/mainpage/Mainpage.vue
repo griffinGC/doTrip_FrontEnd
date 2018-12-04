@@ -50,7 +50,7 @@
         </div>
         </div>
         </b-card>
-        <div  class="text-center pt-3">
+        <div  class="text-center pt-3 pb-5">
             <b-button v-on:click="addAll" variant="primary">Save</b-button>
         </div>
     </b-container>
