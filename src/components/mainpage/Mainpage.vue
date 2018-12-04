@@ -83,16 +83,16 @@ export default {
               alert("날짜를 제대로 입력해 주세요!");
               return false;
           }
-          for(let i = 0; i< this.dot.length; i++)
-          {
-              if(this.dot.length === 0){
-                  break;
-              }
-              else if(this.inDay < this.dot[i].outDay){
-                  alert("날짜가 맞지 않습니다!")
-                  return false;
-              }
-          }
+          // for(let i = 0; i< this.dot.length; i++)
+          // {
+          //     if(this.dot.length === 0){
+          //         break;
+          //     }
+          //     else if(this.inDay < this.dot[i].outDay){
+          //         alert("날짜가 맞지 않습니다!")
+          //         return false;
+          //     }
+          // }
           this.dot.push({
             // num : ++this.num,
             num : this.dot.length,
@@ -103,18 +103,6 @@ export default {
           this.mainCity="";
           this.inDay= this.outDay;
           this.outDay = "";
-        //   this.axios.post("http://localhost:8000/addDot",
-        //   {
-        //       num : ++this.num,
-        //       mainCity : this.mainCity,
-        //       inDay : this.inDay,
-        //       outDay : this.outDay
-        //   }).then(response =>{
-        //       console.log("success");
-        //       this.mainCity="";
-        //       this.inDay= this.outDay;
-        //       this.outDay = "";
-        //   })
 
 
       },

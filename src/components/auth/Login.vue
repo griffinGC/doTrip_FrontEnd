@@ -14,7 +14,7 @@
              <div class = "col px-5">
               ID
               <b-form-input class="my-2" v-model="id"  type="text" placeholder="아이디를 입력해주세요" ></b-form-input>
-              PASS
+              PASSWORD
               <b-form-input class="my-2" v-model="pass" type="password" placeholder="비밀번호를 입력해주세요" ></b-form-input>
               <b-button type="submit" class="my-3" variant="primary" v-on:click.prevent="loginSubmit">LOGIN</b-button>
               &nbsp;&nbsp;
