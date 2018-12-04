@@ -11,7 +11,7 @@
            <div class="px-5">
                 <b-form-textarea  v-model="doAction" rows="4" placeholder="할일을 구체적으로 적어주세요!"></b-form-textarea>
            </div>
-           <b-button class="my-2" @click="addTask" @keyup:enter="addTask">일정추가</b-button>
+           <b-button class="my-2" @click="addTask" @keyup:enter="addTask" variant="primary">일정추가</b-button>
         </section>
         <div class="mx-5 row">
             <div class="col">
@@ -19,7 +19,7 @@
                 <b-card border-variant="info" class="mx-2 mb-5">
                     <ul v-for="list in schedule.checkList" :key="list.num" class="mx-1 pt-2 row">
                         <li class="text-left col-8" ><a href @click.prevent="show_action(list)" >{{list.title}}</a></li>
-                        <ul class="h4 xi-trash-o text-center col-1" @click="deleteList(list.id)"></ul> 
+                        <ul class="h4 xi-trash-o text-center col-1"  @click="deleteList(list.id)"></ul> 
                         <!-- 쓰레기통 클릭했을 때 구현하기 -->
                     </ul>
                 </b-card>
@@ -29,7 +29,7 @@
                 <b-card border-variant="info" class="mx-2 mb-5">
                     <div class="text-center">
                         <b-form-textarea v-model="todo" class="row text-center ml-1"></b-form-textarea>
-                        <b-button @click.prevent='save_action()' variant="secondary" class="row mt-2 text-center" >저장</b-button>
+                        <b-button @click.prevent='save_action()' variant="primary" class="row mt-2 text-center" >저장</b-button>
                     </div>
                 </b-card>
             </div>
@@ -125,11 +125,21 @@ export default {
 .schedule{
   text-align: center;
   margin-top: 20px;
+   color:white;
 }
 .title{
     padding: 15px 4% 10px;
     font-size: 28px;
     font-weight: bold;
+}
+.panel{
+     color:white;
+}
+
+body{
+  background : url(../auth/bg2.jpg);
+	background-repeat: no-repeat;
+	background-size : cover;
 }
 
 </style>

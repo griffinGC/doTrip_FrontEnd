@@ -24,20 +24,20 @@
             <span>
               <b-form-input class="outCity mx-1 text-center input-dot" type="date" v-model="outDay" @keyup.enter="addCity"/>
             </span>
-            <i class="add h2 xi-plus-circle-o text-center dot-add" style="cursor:pointer" v-on:click="addCity" ></i>
+            <i class="add h2 xi-plus-circle-o text-center dot-add" variant="primary" style="cursor:pointer" v-on:click="addCity" ></i>
         </form>
       </div>
       </b-card>
 
-      <b-card border-variant="info">
-          <h5><b-alert class="mb-0" show variant="primary">Dot List </b-alert></h5>
+      <b-card border-variant="info" >
+          <h5><b-alert  show variant="primary">Dot List </b-alert></h5>
           <div>
-            <span class="row h3">
-              <span style="width:11%">Dot</span>
-              <span style="width:19%">City</span>
-              <span style="width:33%">StartDay</span>
-              <span style="width:20%">EndDay</span>
-              <span style="width:17%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</span>
+            <span class="row">
+              <span style="width:11%" class=" h3">Dot</span>
+              <span style="width:19%" class="  h3">City</span>
+              <span style="width:33%" class="  h3">StartDay</span>
+              <span style="width:20%" class=" h3">EndDay</span>
+              <span style="width:17%" class=" h3">Delete</span>
             </span>
           </div>
           <hr class="ml-0">
@@ -51,7 +51,7 @@
         </div>
         </b-card>
         <div  class="text-center pt-3">
-            <b-button v-on:click="addAll">Save</b-button>
+            <b-button v-on:click="addAll" variant="primary">Save</b-button>
         </div>
     </b-container>
   </div>
