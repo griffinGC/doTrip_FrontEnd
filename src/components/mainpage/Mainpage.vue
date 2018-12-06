@@ -17,11 +17,12 @@
             </span>
             <i class="add h2 xi-plus-circle-o text-center dot-add" variant="primary" style="cursor:pointer" v-on:click="addCity" v-b-tooltip.hover title="Add!"></i>
         </form>
+        <h2>{{dot}}</h2>
       </div>
       </b-card>
-
       <b-card border-variant="info" >
           <h5><b-alert  show variant="primary">Dot List </b-alert></h5>
+
           <div>
             <span class="row">
               <span style="width:11%" class=" h3">Dot</span>
@@ -34,7 +35,7 @@
           <hr class="ml-0">
           <div class="cityLists">
             <div class="temp h5 text-center row ml-1 pt-1" v-for="city in dot" v-bind:key="city.id" v-bind="city">
-            <CityList v-bind="city" class="col-11 pr-0"></CityList>
+            <CityList v-bind="city" class="clist col-11 pr-0"></CityList>
             <div class="h4 xi-trash-o text-center mt-2 pr-2 col-0 " style="cursor:pointer" v-on:click="deleteCity(city.num)" v-b-tooltip.hover title="Delete!"></div>
         </div>
         </div>
@@ -50,7 +51,7 @@
 import dragula from 'dragula'
 // import 'dragula/dist/dragula.css'
 import CityList from '@/components/mainpage/CityList'
-import axios from 'axios'
+// import axios from 'axios'
 
 
 export default {
@@ -68,7 +69,7 @@ export default {
               alert("도시를 입력해 주세요!");
               return false;
           }
-          else if(this.inDay >= this.outDay){
+          else if(this.inDay > this.outDay){
               alert("날짜를 제대로 입력해 주세요!");
               return false;
           }
@@ -81,9 +82,8 @@ export default {
           //         alert("날짜가 맞지 않습니다!")
           //         return false;
           //     }
-          // }
+          // } 
           this.dot.push({
-            // num : ++this.num,
             num : this.dot.length,
             mainCity : this.mainCity,
             inDay : this.inDay,
@@ -102,8 +102,6 @@ export default {
             this.dot[i].num = i;
         }
         console.log(this.dot);
-        // temp.push(this.dot);
-
       },
       addAll(){
           this.make_order().then(()=>{
@@ -199,10 +197,8 @@ export default {
 
       this.dragulaCards = dragula([
           ...Array.from(this.$el.querySelectorAll('.cityLists'))
-    //   ]).on('drop',(el, wrapper, target, siblings)=>{
-        ]).on('drop',()=>{
-          console.log('drop')
-      })
+      ]).on('drop',(el, target, source, siblings)=>{
+    })
   },
   data(){
     return {

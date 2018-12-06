@@ -6,7 +6,7 @@
         </router-link>
         <!-- <h2> -->
         <span class="city data" >{{mainCity}}</span>
-        <span class="in data">{{inDay}}</span>
+        <span class="in data" >{{inDay}}</span>
         <span class="out data">{{outDay}}</span>
         <!-- </h2> -->
 
@@ -27,9 +27,6 @@ export default {
   methods:{
     getUrl(Id) {
       return "/Calendar/" + Id;
-    },
-    deleteCity(num){
-
     }
   },
   data(){
