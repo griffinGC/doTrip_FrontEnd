@@ -17,7 +17,7 @@
             </span>
             <i class="add h2 xi-plus-circle-o text-center dot-add" variant="primary" style="cursor:pointer" v-on:click="addCity" v-b-tooltip.hover title="Add!"></i>
         </form>
-        <h2>{{dot}}</h2>
+        <!-- <h2>{{dot}}</h2> -->
       </div>
       </b-card>
       <b-card border-variant="info" >
