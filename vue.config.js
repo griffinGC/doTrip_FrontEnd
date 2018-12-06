@@ -9,5 +9,7 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  outputDir: '../dotrip_server/public/',
+  assetsDir: './'
 }
