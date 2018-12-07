@@ -39,8 +39,11 @@ export default {
   methods : {
     loginSubmit : function(){
       this.formVal();
-      if(this.validate.length != 0){
-        this.validate += "를 입력해 주세요!";
+      var pattern = /[^(a-zA-Z0-9)]/;
+      if(this.validate.length != 0 || pattern.test(this.id)){
+        this.validate += "를 입력해 주세요!\n";
+        if(pattern.test(this.id))
+          this.validate += 'ID가 올바르지 않습니다!';
         alert(this.validate);
       }
       else{
@@ -62,11 +65,12 @@ export default {
       }
     },
     formVal : function(){
+
       this.validate = '';
       if(!this.name) this.validate += 'NAME ';
       if(!this.id) this.validate += 'ID ';
       if(!this.pass) this.validate += 'PASSWORD ';
-    }
+    },
   }
 }
 </script>
