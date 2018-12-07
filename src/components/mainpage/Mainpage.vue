@@ -192,11 +192,13 @@ export default {
         }
 
         return copy;
-      },
-      excel : function(){
-        if(this.dot.length == 0)
-          alert('There is no dot!');
       }
+      // excel : function(){
+      //   this.$http.get('/api/dot/excel',(result)=>{
+      //     if(result.data.success == 0)
+      //       alert(result.data.message);
+      //   })
+      // }
   },
   updated(){
       if(this.dragulaCards) this.dragulaCards.destroy()
