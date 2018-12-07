@@ -42,6 +42,8 @@
         </b-card>
         <div  class="text-center pt-3 pb-5">
             <b-button v-on:click="addAll" variant="primary">Save</b-button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b-button v-on:click="excel" href="http://localhost:3000/dot/excel" variant="secondary">Save Excel File</b-button>
         </div>
     </b-container>
   </div>
@@ -82,7 +84,7 @@ export default {
           //         alert("날짜가 맞지 않습니다!")
           //         return false;
           //     }
-          // } 
+          // }
           this.dot.push({
             num : this.dot.length,
             mainCity : this.mainCity,
@@ -190,6 +192,10 @@ export default {
         }
 
         return copy;
+      },
+      excel : function(){
+        if(this.dot.length == 0)
+          alert('There is no dot!');
       }
   },
   updated(){
