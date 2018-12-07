@@ -43,7 +43,7 @@
         <div  class="text-center pt-3 pb-5">
             <b-button v-on:click="addAll" variant="primary">Save</b-button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <b-button v-on:click="excel" href="http://13.209.77.95:3000/dot/excel" variant="secondary">Save Excel File</b-button>
+            <b-button v-on:click="excel" href="http://13.209.77.95:8080/api/dot/excel" variant="secondary">Save Excel File</b-button>
         </div>
     </b-container>
   </div>
